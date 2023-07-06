@@ -3,13 +3,13 @@ import { Container, Title, Grid, Project, Image, ProjectTitle } from './styles';
 
 const Portfolio: React.FC = () => {
   const projects = [
-    { id: 1, title: 'Project 1', image: '/images/project1.jpg' },
-    { id: 2, title: 'Project 2', image: '/images/project2.jpg' },
-    { id: 3, title: 'Project 3', image: '/images/project3.jpg' },
+    { id: 1, title: 'Project 1', image: './src/assets/home-illustration.svg' },
+    { id: 2, title: 'Project 2', image: './src/assets/home-illustration.svg' },
+    { id: 3, title: 'Project 3', image: './src/assets/home-illustration.svg' },
   ];
 
   return (
-    <Container>
+    <Container id="portfolio-section">
       <Title>Projetos</Title>
       <Grid>
         {projects.map((project) => (

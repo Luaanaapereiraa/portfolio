@@ -1,12 +1,13 @@
-import styled from '@emotion/styled';
+import styled, { keyframes } from 'styled-components';
 
 export const HeaderWrapper = styled.header`
    position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #1f2937;
+  background-color: rgba(35, 37, 48, 0.50);
   z-index: 9999;
+  backdrop-filter: blur(2px)
 `;
 
 
@@ -19,12 +20,30 @@ display: flex;
   margin: 0 auto;
 `;
 
-export const Logo = styled.a`
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
+const waveAnimation = keyframes`
+  0% { color: #e94ffe; }
+  12.5% { color: #c933ff; }
+  37.5% { color: #a726ff; }
+  50% { color: #8519ff; }
+  62.5% { color: #ad14c4; }
+  75% { color: #9900b1; }
+  87.5% { color: #85009e; }
+  100% { color: #71008c; }
+  
+
 `;
+
+export const WaveText = styled.span`
+  animation: ${waveAnimation} 10s linear infinite;
+  font-size: 3rem;
+  font-weight: 600;
+  font-family:  'Mrs Saint Delafield', cursive;
+  border: 1px solid;
+  border-radius: 100%;
+ 
+
+
+  `;
 
 export const NavList = styled.ul`
   display: flex;
@@ -37,15 +56,14 @@ export const NavList = styled.ul`
   gap: 1rem;
 `;
 
-export const NavItem = styled.li``;
-
-export const NavLink = styled.a`
-  color: #d1d5db;
+export const NavItem = styled.li`
+color: ${(props) => props.theme['purple-200']};
   text-decoration: none;
   transition: color 0.3s ease;
-  
 
   &:hover {
-    color: #fff;
+    color: ${(props) => props.theme['white']};
+    cursor: pointer;
+    
   }
-`;
+  `;

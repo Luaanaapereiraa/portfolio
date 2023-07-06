@@ -9,7 +9,29 @@ body {
     background: ${(props) => props.theme['gray-800']};
     color: ${(props) => props.theme['gray-400']};
     -webkit-font-smoothing: antialiased;
+   overflow-x: hidden;
+   
 }
+
+::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: 2px solid ${(props) => props.theme['purple-400']};;
+    border-radius: 20px;
+
+  }
+
+  ::-webkit-scrollbar-thumb:hover { 
+    background-color: ${(props) => props.theme['gray-300']};;
+  }
+
 
 :focus {
     outline: 0;
