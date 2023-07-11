@@ -5,7 +5,6 @@ Este é o meu projeto de site do portfólio, onde compartilho os links dos meus 
 - React: uma biblioteca JavaScript para construir interfaces de usuário.
 - TypeScript: um superconjunto tipado do JavaScript.
 - Vite: um bundler e servidor de desenvolvimento rápido.
-- Tailwind CSS: um framework CSS utilitário para estilização rápida e responsiva.
 - Styled Components: uma biblioteca para escrever CSS em componentes JavaScript.
 
 ## Pré-requisitos
