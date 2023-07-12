@@ -10,7 +10,6 @@ export const ContainerSkills = styled.div`
     margin-bottom: 2rem;
     @media (max-width: 768px) {
         margin-top: 10px;
-        max-height: 250px;
     }
 
 `

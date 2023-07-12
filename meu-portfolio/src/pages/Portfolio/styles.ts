@@ -81,4 +81,9 @@ export const ProjectTitle = styled.h1`
 `;
 
 export const Description = styled.p`
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 1rem;
+        color: ${(props) => props.theme['purple-400']};
 `;

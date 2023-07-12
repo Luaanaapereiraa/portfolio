@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const floatAnimation = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`;
 
 export const ContainerHome = styled.div`
   max-width: 800px;
@@ -14,10 +26,8 @@ export const ContainerHome = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0;
-    padding-bottom: 0;
     overflow-x: hidden;
-    max-height: 800px;
+
   }
 `;
 
@@ -51,6 +61,7 @@ export const AboutPurple = styled.a`
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      overflow-x: hidden;
     }
 `;
 
@@ -84,13 +95,19 @@ export const Illustration = styled.div`
   align-items: center;
   flex-direction: column;
   width: 60%;
+  min-height: 100%;
   max-width: 100vw;
   max-height: 100vh;
   overflow: hidden;
 
+  animation: ${floatAnimation} 3s ease-in-out infinite;
+
+
   @media (max-width: 768px) {
-    width: 100%;
-    margin-top: 0;
+    img{
+      max-width: 100vw;
+      margin-top: 0;
+    }
   }
 
 `;
