@@ -2,12 +2,18 @@ import styled from "styled-components";
 
 export const ContainerHome = styled.div`
   max-width: 800px;
-  margin: 0 auto;
-  padding: 0;
+  margin: auto;
+  padding: 1rem;
   display: flex;
   flex-direction: row;
-  gap: 3rem;
+  gap: 1rem;
   overflow-x: hidden;
+  padding-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const ContainerText = styled.div`
@@ -35,6 +41,12 @@ export const AboutPurple = styled.a`
     font-size: 1.1rem;
     font-family: 'Roboto Mono', monospace;
     color: ${(props) => props.theme['purple-400']};
+
+    @media (max-width: 768px) {
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
 `;
 
 export const About = styled.a`
@@ -42,13 +54,22 @@ export const About = styled.a`
     font-size: 1.2rem;
     font-weight: 500;
     color: ${(props) => props.theme['gray-300']};
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
 `;
 export const MyName = styled.h1`
     padding: 0 1rem  1rem  1rem;
-    
     font-size: 2rem;
     margin-top: 0;
     color: ${(props) => props.theme['purple-400']};
+    text-shadow: 
+                -1px -1px 0px  ${(props) => props.theme['white']}, 
+                -1px 1px 0px  ${(props) => props.theme['purple-400']},                    
+                1px -1px 0px ${(props) => props.theme['purple-400']},                  
+                1px 0px 0px  ${(props) => props.theme['purple-400']};
+
 `;
 
 export const Illustration = styled.div`
@@ -60,5 +81,10 @@ export const Illustration = styled.div`
   max-width: 100vw;
   max-height: 100vh;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-top: 0;
+  }
 
 `;

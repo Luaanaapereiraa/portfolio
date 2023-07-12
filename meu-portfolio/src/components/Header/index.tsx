@@ -6,9 +6,9 @@ const Header: React.FC = () => {
   return (
     <HeaderWrapper>
       <Nav>
-        <h1>
+        
           <WaveText>L</WaveText>
-        </h1>
+        
         <NavList>
           <NavItem>
             <Link
@@ -22,12 +22,12 @@ const Header: React.FC = () => {
           </NavItem>
           <NavItem>
             <Link
-              to="habilidades-section"
+              to="skills-section"
               smooth={true}
               duration={500}
               offset={-100}
             >
-              //Habilidades
+              //Skills
             </Link>
           </NavItem>
           <NavItem>
@@ -43,7 +43,7 @@ const Header: React.FC = () => {
 
           <NavItem>
             <Link
-              to="contato-section"
+              to="contact-section"
               smooth={true}
               duration={500}
               offset={-100}

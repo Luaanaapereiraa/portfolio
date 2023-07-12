@@ -9,7 +9,8 @@ body {
     background: ${(props) => props.theme['gray-800']};
     color: ${(props) => props.theme['gray-400']};
     -webkit-font-smoothing: antialiased;
-   overflow-x: hidden;
+    overflow-x: hidden;
+    margin: 0;
    
 }
 

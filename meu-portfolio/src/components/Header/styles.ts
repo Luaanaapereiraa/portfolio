@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 
 export const HeaderWrapper = styled.header`
-   position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -34,7 +34,7 @@ const waveAnimation = keyframes`
 `;
 
 export const WaveText = styled.span`
-  animation: ${waveAnimation} 10s linear infinite;
+  animation: ${waveAnimation} 8s linear infinite;
   font-size: 3rem;
   font-weight: 600;
   font-family:  'Mrs Saint Delafield', cursive;
