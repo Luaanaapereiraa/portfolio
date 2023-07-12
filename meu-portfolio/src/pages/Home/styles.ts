@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const ContainerHome = styled.div`
   max-width: 800px;
+  max-height: 800px;
   margin: auto;
-  padding: 1rem;
+  padding: 0;
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -13,6 +14,10 @@ export const ContainerHome = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    overflow-x: hidden;
+    max-height: 800px;
   }
 `;
 
@@ -57,6 +62,7 @@ export const About = styled.a`
 
     @media (max-width: 768px) {
       text-align: center;
+      font-size: 1.2rem;
     }
 `;
 export const MyName = styled.h1`

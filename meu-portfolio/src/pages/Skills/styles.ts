@@ -9,7 +9,8 @@ export const ContainerSkills = styled.div`
     margin: 0 auto;
     margin-bottom: 2rem;
     @media (max-width: 768px) {
-        margin-top: 50px;
+        margin-top: 10px;
+        max-height: 250px;
     }
 
 `
