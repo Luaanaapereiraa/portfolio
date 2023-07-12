@@ -3,9 +3,9 @@ import { Container, Title, Grid, Project, Image, ProjectTitle, Description } fro
 
 const Portfolio: React.FC = () => {
   const projects = [
-    { id: 1, title: 'Meu Portfólio', image: './src/assets/home-illustration.svg', link: 'https://github.com/Luaanaapereiraa/portfolio', description: 'Projeto criado usando' },
-    { id: 2, title: 'AvocatFeed', image: './src/assets/avocatfeed.png', link: 'https://github.com/Luaanaapereiraa/AvocatSocialFeed' },
-    { id: 3, title: 'PomodoroDev', image: './src/assets/pomodorodev.png', link: 'https://github.com/Luaanaapereiraa/pomodorodev' },
+    { id: 1, title: 'Meu Portfólio', image: './src/assets/home-illustration.svg', link: 'https://github.com/Luaanaapereiraa/portfolio', description: 'Projeto desse portfólio, criado usando React, TypeScript, Vite e Styled Components' },
+    { id: 2, title: 'AvocatFeed', image: './src/assets/avocatfeed.png', link: 'https://github.com/Luaanaapereiraa/AvocatSocialFeed', description: 'Projeto de feed com interações, criado usando React, TypeScript, Vite e CSS Modules' },
+    { id: 3, title: 'PomodoroDev', image: './src/assets/pomodorodev.png', link: 'https://github.com/Luaanaapereiraa/pomodorodev', description: 'Projeto de pomodoro para ajudar Devs, criado usando React, TypeScript, Vite e Styled Components' },
   ];
 
   return (
