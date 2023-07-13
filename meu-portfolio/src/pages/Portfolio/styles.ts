@@ -1,12 +1,35 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
-export const Container = styled.div`
+const fadeIn = keyframes`
+from {
+    opacity: 0;
+    transform: translateY(50px);
+    }
+to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+
+export const Container = styled.div<{ isActive?: boolean }>`
   max-width: 800px;
   margin: 0 auto ;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  opacity: ${(props) => (props.isActive ? "1" : "0")};
+    transform: translateY(${(props) => (props.isActive ? "0" : "20px")});
+    transition: opacity 500ms, transform 500ms;
+    animation: ${fadeIn}  700ms ease-in-out;
+
+    @media (max-width: 768px) {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+
 
 `;
 
@@ -17,6 +40,7 @@ export const Title = styled.h1`
   margin-top: 2rem;
   color: ${(props) => props.theme['purple-300']};
   text-align: center;
+  font-family: 'Roboto Mono', monospace;
 
   text-shadow: 
                 -1px -1px 0px  ${(props) => props.theme['white']}, 
@@ -34,6 +58,7 @@ export const Grid = styled.div`
     text-decoration: none;
   }
   
+
 `;
 
 export const Project = styled.div`
@@ -63,7 +88,6 @@ export const Image = styled.img`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 100rem;
   transition: background-color 0.3s ease-in-out;
   &:hover {
       transform: scale(2);
@@ -72,11 +96,10 @@ export const Image = styled.img`
   `;
 
 export const ProjectTitle = styled.h1`
-  font-size: 1.35rem;
+  font-size: 1.30rem;
   margin-bottom: 0.5rem;
   color: ${(props) => props.theme['purple-400']};
-  font-family: 'Roboto', sans-serif;
-  
+  font-family: 'Roboto Mono', monospace;  
 
 `;
 
@@ -85,5 +108,5 @@ export const Description = styled.p`
         flex-direction: column;
         align-items: center;
         font-size: 1rem;
-        color: ${(props) => props.theme['purple-400']};
+        color: ${(props) => props.theme['gray-300']};
 `;

@@ -1,6 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const ContainerContact = styled.div`
+const fadeIn = keyframes`
+from {
+    opacity: 0;
+    transform: translateY(50px);
+    }
+to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+
+export const ContainerContact = styled.div<{ isActive?: boolean }>`
     max-width: 800px;
     display: flex;
     flex-direction: column;
@@ -10,6 +21,12 @@ export const ContainerContact = styled.div`
     margin-bottom: 2rem;
     padding: 1rem;
     margin: 0 auto;
+
+    opacity: ${(props) => (props.isActive ? "1" : "0")};
+    transform: translateY(${(props) => (props.isActive ? "0" : "20px")});
+    transition: opacity 500ms, transform 500ms;
+    animation: ${fadeIn}  700ms ease-in-out;
+
     
     @media (max-width: 768px) {
         margin-top: 50px;
@@ -23,12 +40,15 @@ export const Title = styled.h1`
     margin-top: 3rem;
     color: ${(props) => props.theme['purple-300']};
     text-align: center;
+    font-family: 'Roboto Mono', monospace;
 
     text-shadow: 
                 -1px -1px 0px  ${(props) => props.theme['white']}, 
                 -1px 1px 0px  ${(props) => props.theme['purple-400']},                    
                 1px -1px 0px ${(props) => props.theme['purple-400']},                  
                 1px 0px 0px  ${(props) => props.theme['purple-400']};
+
+  
 
 `;
 

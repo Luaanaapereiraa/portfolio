@@ -1,11 +1,16 @@
 import { ContainerContact, EmailStyle, IconStyle, LinkIcon, LinkedinStyle, PurpleText, Title } from "./styles";
 import { Icon } from '@iconify/react';
-
+import { useInView } from "react-intersection-observer";
 
 const Contact = () => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.2,
+        }); 
+
     return (
-        <ContainerContact>
-            <Title id="contact-section">Contato</Title>
+        <ContainerContact isActive={inView} ref={ref} className={inView ? "active" : ""}>
+            <Title id="contact-section" >Contato</Title>
             <PurpleText>Vamos conversar?</PurpleText>
             <p>Entre em contato comigo clicando nos links abaixo por e-mail ou Linkedin:</p>
             <IconStyle>

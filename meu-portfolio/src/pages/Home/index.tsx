@@ -1,11 +1,15 @@
 import { About, AboutPurple, ContainerHome, ContainerText, Illustration, MyName } from "./styles";
 import homeIllustration from "../../assets/home-illustration.svg";
-
+import { useInView } from "react-intersection-observer";
 
 const Home = () => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.2,
+        });
     return (
         <>
-        <ContainerHome id="home-section">
+        <ContainerHome id="home-section" isActive={inView} ref={ref} className={inView ? "active" : ""}>
             <ContainerText>
                 <AboutPurple>Olá, Meu nome é</AboutPurple>
                 <MyName> Luana sou Desenvolvedora de Software Front end </MyName>

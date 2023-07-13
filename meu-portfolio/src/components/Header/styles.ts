@@ -60,6 +60,7 @@ export const NavItem = styled.li`
 color: ${(props) => props.theme['purple-200']};
   text-decoration: none;
   transition: color 0.3s ease;
+  font-family: 'Roboto Mono', monospace;
 
   &:hover {
     color: ${(props) => props.theme['white']};

@@ -1,4 +1,5 @@
 import { ContainerSkills, Grid, ImageWrapper, Title } from "./styles";
+import { useInView } from "react-intersection-observer";
 import Javascript from "../../assets/javascript.svg";
 import React from "../../assets/react.svg";
 import Typescript from "../../assets/typescript.svg";
@@ -17,14 +18,19 @@ import Figma from "../../assets/figma.svg";
 
 
 
+const AnimatedSkills = () => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.2,
+    });
 
 
 
-const Skills = () => {
+
     return (
 
-        <>
-            <ContainerSkills id= "skills-section">
+        
+            <ContainerSkills id= "skills-section" isActive={inView} ref={ref} className={inView ? "active" : ""}>
                 <Title>Skills</Title>
                 <Grid>
                     <ImageWrapper>
@@ -89,8 +95,14 @@ const Skills = () => {
                     </ImageWrapper>
                 </Grid>
             </ContainerSkills>
-        </>
+    
     );
+};
+
+    const Skills = () => {
+        return(
+            <AnimatedSkills/>
+        )  
 };
 
 export default Skills;

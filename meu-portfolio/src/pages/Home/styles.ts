@@ -1,5 +1,16 @@
 import styled, { keyframes } from "styled-components";
 
+const fadeIn = keyframes`
+from {
+    opacity: 0;
+    transform: translateY(20px);
+    }
+to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+
 const floatAnimation = keyframes`
   0% {
     transform: translateY(0);
@@ -12,7 +23,7 @@ const floatAnimation = keyframes`
   }
 `;
 
-export const ContainerHome = styled.div`
+export const ContainerHome = styled.div<{ isActive?: boolean }>`
   max-width: 800px;
   max-height: 800px;
   margin: auto;
@@ -22,6 +33,11 @@ export const ContainerHome = styled.div`
   gap: 1rem;
   overflow-x: hidden;
   padding-bottom: 2rem;
+  
+    opacity: ${(props) => (props.isActive ? "1" : "0")};
+    transform: translateY(${(props) => (props.isActive ? "0" : "20px")});
+    transition: opacity 500ms, transform 500ms;
+    animation: ${fadeIn}  700ms ease-in-out;
 
   @media (max-width: 768px) {
     flex-direction: column;

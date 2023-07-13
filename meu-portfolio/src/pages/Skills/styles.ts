@@ -1,6 +1,15 @@
-import styled from "styled-components";
-
-export const ContainerSkills = styled.div`
+import styled, { keyframes } from "styled-components";
+const fadeIn = keyframes`
+from {
+    opacity: 0;
+    transform: translateY(20px);
+    }
+to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+export const ContainerSkills = styled.div<{ isActive?: boolean }>`
     max-width: 800px;
     display: flex;
     flex-direction: column;
@@ -8,6 +17,12 @@ export const ContainerSkills = styled.div`
     align-items: center; 
     margin: 0 auto;
     margin-bottom: 2rem;
+    opacity: ${(props) => (props.isActive ? "3" : "0")};
+    transform: translateY(${(props) => (props.isActive ? "0" : "20px")});
+    transition: opacity 700ms, transform 700ms;
+    animation: ${fadeIn}  700ms ease-in-out;
+
+
     @media (max-width: 768px) {
         margin-top: 10px;
     }
@@ -42,6 +57,7 @@ export const ImageWrapper = styled.div`
         margin-top: 1rem;
         font-size: 1rem;
         color: ${(props) => props.theme['purple-300']};
+        font-family: 'Roboto Mono', monospace;
     }
 `;
 
@@ -51,6 +67,7 @@ export const Title = styled.h1`
     font-weight: bold;
     margin-bottom: 3rem;
     margin-top: 3rem;
+    font-family: 'Roboto Mono', monospace;
     color: ${(props) => props.theme['purple-300']};
     text-align: center; 
     text-shadow: -1px -1px 0px  ${(props) => props.theme['white']}, 
