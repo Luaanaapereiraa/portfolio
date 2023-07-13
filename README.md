@@ -12,6 +12,6 @@ Este é o meu projeto de site do portfólio, onde compartilho os links dos meus 
 Antes de começar, certifique-se de ter o Node.js e o npm (ou yarn) instalados em sua máquina.
 
 ## Link do projeto :
- Em breve farei o deploy do projeto assim que estiver concluído 
+ https://luanapereira.vercel.app/ 
 
 
