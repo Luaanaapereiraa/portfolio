@@ -50,4 +50,17 @@ describe('Header', () => {
       'false'
     )
   })
+
+  it('fecha o menu ao escolher um link', async () => {
+    const user = userEvent.setup()
+    renderWithTheme(<Header />)
+
+    await user.click(screen.getByRole('button', { name: 'Abrir menu' }))
+    await user.click(screen.getByRole('link', { name: '//Skills' }))
+
+    expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
+      'aria-expanded',
+      'false'
+    )
+  })
 })
