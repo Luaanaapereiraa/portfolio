@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { navItems } from './nav'
 import { projects } from './projects'
 import { skills } from './skills'
-import { contactInfo } from './contact'
+import { contactInfo, getWhatsAppUrl } from './contact'
 
 describe('navItems', () => {
   it('lista as seções principais do portfólio', () => {
@@ -41,9 +41,19 @@ describe('projects', () => {
 })
 
 describe('contactInfo', () => {
-  it('mantém e-mail e LinkedIn preenchidos', () => {
+  it('mantém e-mail, LinkedIn e WhatsApp preenchidos', () => {
     expect(contactInfo.email).toMatch(/@/)
     expect(contactInfo.linkedinUrl).toMatch(/^https:\/\//)
     expect(contactInfo.linkedinLabel).toBeTruthy()
+    expect(contactInfo.whatsappLabel).toBe('WhatsApp')
+    expect(contactInfo.whatsappNumber).toMatch(/^\d{11}$/)
+  })
+})
+
+describe('getWhatsAppUrl', () => {
+  it('monta o link do WhatsApp com DDI 55 e mensagem', () => {
+    expect(getWhatsAppUrl('(11) 99999-9999')).toBe(
+      'https://wa.me/5511999999999?text=Ol%C3%A1%21+Vim+pelo+seu+portf%C3%B3lio.'
+    )
   })
 })

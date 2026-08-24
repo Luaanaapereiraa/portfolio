@@ -1,5 +1,5 @@
 import { Icon } from '@iconify/react'
-import { contactInfo } from '../../data/contact'
+import { contactChannels } from '../../data/contact'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import { SectionTitle } from '../../styles/shared'
 import {
@@ -16,20 +16,24 @@ const Contact = () => {
     <ContainerContact id="contact-section" $isActive={inView} ref={ref}>
       <SectionTitle>Contato</SectionTitle>
       <PurpleText>Vamos conversar?</PurpleText>
-      <p>Entre em contato comigo pelos links abaixo, por e-mail ou LinkedIn:</p>
+      <p>Entre em contato comigo pelos links abaixo, por e-mail, LinkedIn ou WhatsApp:</p>
       <IconStyle>
-        <ContactCard href={`mailto:${contactInfo.email}`}>
-          <Icon icon="line-md:email" color="#8519ff" width="64" height="64" />
-          <span>{contactInfo.email}</span>
-        </ContactCard>
-        <ContactCard
-          href={contactInfo.linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Icon icon="devicon:linkedin" width="56" height="56" />
-          <span>{contactInfo.linkedinLabel}</span>
-        </ContactCard>
+        {contactChannels.map((channel) => (
+          <ContactCard
+            key={channel.id}
+            href={channel.href}
+            target={channel.external ? '_blank' : undefined}
+            rel={channel.external ? 'noopener noreferrer' : undefined}
+          >
+            <Icon
+              icon={channel.icon}
+              color={channel.iconColor}
+              width={channel.iconWidth}
+              height={channel.iconHeight}
+            />
+            <span>{channel.label}</span>
+          </ContactCard>
+        ))}
       </IconStyle>
     </ContainerContact>
   )

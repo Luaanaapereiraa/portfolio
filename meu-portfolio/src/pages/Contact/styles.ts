@@ -32,14 +32,15 @@ export const PurpleText = styled.p`
 export const IconStyle = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
   margin-top: 2rem;
-  max-width: 36rem;
+  max-width: 52rem;
 
-  ${media.sm} {
+  ${media.md} {
     grid-template-columns: 1fr;
     gap: 1rem;
+    max-width: 24rem;
   }
 `
 
