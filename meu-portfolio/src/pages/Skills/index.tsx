@@ -9,7 +9,7 @@ const Skills = () => {
 
   return (
     <ContainerSkills id="skills-section" $isActive={inView} ref={ref}>
-      <SectionTitle>Skills</SectionTitle>
+      <SectionTitle data-kicker="// skills">Skills</SectionTitle>
       {skillGroups.map((group) => (
         <SkillCategory key={group.title}>
           <CategoryTitle>{group.title}</CategoryTitle>

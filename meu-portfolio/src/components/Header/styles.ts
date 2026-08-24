@@ -18,9 +18,10 @@ export const HeaderWrapper = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(35, 37, 48, 0.5);
   z-index: 9999;
-  backdrop-filter: blur(2px);
+  background: rgba(9, 8, 14, 0.62);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border-bottom: 1px solid ${(props) => props.theme.border};
 `
 
 export const Nav = styled.nav`
@@ -28,8 +29,8 @@ export const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.75rem 1.25rem;
-  max-width: 960px;
+  padding: 0.7rem 1.25rem;
+  max-width: 1100px;
   margin: 0 auto;
   position: relative;
 `
@@ -42,32 +43,33 @@ export const BrandLink = styled(Link)`
 
 export const WaveText = styled.span`
   animation: ${waveAnimation} 8s linear infinite;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.85rem, 5vw, 2.5rem);
   font-weight: 600;
   font-family: 'Mrs Saint Delafield', cursive;
-  border: 1px solid;
+  border: 1px solid currentColor;
   border-radius: 100%;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 3rem;
+  height: 3rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  box-shadow: 0 0 22px ${(props) => props.theme.glow};
 
   ${media.sm} {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.6rem;
+    height: 2.6rem;
   }
 `
 
 export const MenuButton = styled.button`
   display: none;
-  background: none;
-  border: none;
+  background: rgba(168, 85, 247, 0.12);
+  border: 1px solid ${(props) => props.theme.border};
   cursor: pointer;
   color: ${(props) => props.theme['purple-200']};
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.45rem;
+  border-radius: 0.75rem;
 
   ${media.md} {
     display: flex;
@@ -83,37 +85,42 @@ export const NavList = styled.ul<{ $isOpen: boolean }>`
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 1rem;
+  gap: 0.35rem;
 
   ${media.md} {
     display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
     position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+    top: calc(100% + 0.65rem);
+    left: 0.75rem;
+    right: 0.75rem;
     flex-direction: column;
     align-items: stretch;
-    gap: 0;
-    padding: 0.5rem 0 1rem;
-    background-color: rgba(31, 41, 48, 0.97);
-    border-bottom: 1px solid ${(props) => props.theme['purple-400']};
+    gap: 0.25rem;
+    padding: 0.65rem;
+    background: ${(props) => props.theme['surface-strong']};
+    border: 1px solid ${(props) => props.theme.border};
+    border-radius: 1rem;
+    backdrop-filter: blur(18px);
   }
 `
 
 export const NavItem = styled.li`
-  color: ${(props) => props.theme['purple-200']};
+  color: ${(props) => props.theme['purple-300']};
   font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
 
   a {
     display: block;
     color: inherit;
     text-decoration: none;
-    padding: 0.35rem 0.25rem;
-    transition: color 0.3s ease;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    transition: color 0.25s ease, background 0.25s ease;
 
     @media (hover: hover) {
       &:hover {
-        color: ${(props) => props.theme['white']};
+        color: ${(props) => props.theme.white};
+        background: rgba(168, 85, 247, 0.16);
         cursor: pointer;
       }
     }
@@ -121,8 +128,9 @@ export const NavItem = styled.li`
 
   ${media.md} {
     a {
-      padding: 0.85rem 1.25rem;
+      padding: 0.8rem 1rem;
       font-size: 1rem;
+      border-radius: 0.75rem;
     }
   }
 `

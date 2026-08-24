@@ -14,7 +14,7 @@ const Contact = () => {
 
   return (
     <ContainerContact id="contact-section" $isActive={inView} ref={ref}>
-      <SectionTitle>Contato</SectionTitle>
+      <SectionTitle data-kicker="// contato">Contato</SectionTitle>
       <PurpleText>Vamos conversar?</PurpleText>
       <p>Entre em contato comigo pelos links abaixo, por e-mail, LinkedIn ou WhatsApp:</p>
       <IconStyle>

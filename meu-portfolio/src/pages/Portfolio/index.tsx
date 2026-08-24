@@ -8,7 +8,7 @@ const Portfolio = () => {
 
   return (
     <Container id="portfolio-section" $isActive={inView} ref={ref}>
-      <SectionTitle>Projetos</SectionTitle>
+      <SectionTitle data-kicker="// projetos">Projetos</SectionTitle>
       <Grid>
         {projects.map((project) => (
           <a
