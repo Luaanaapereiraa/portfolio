@@ -1,34 +1,38 @@
-import { ContainerContact, EmailStyle, IconStyle, LinkIcon, LinkedinStyle, PurpleText, Title } from "./styles";
-import { Icon } from '@iconify/react';
-import { useInView } from "react-intersection-observer";
+import { Icon } from '@iconify/react'
+import { contactInfo } from '../../data/contact'
+import { useSectionInView } from '../../hooks/useSectionInView'
+import { SectionTitle } from '../../styles/shared'
+import {
+  ContactCard,
+  ContainerContact,
+  IconStyle,
+  PurpleText,
+} from './styles'
 
 const Contact = () => {
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-        threshold: 0.2,
-        }); 
+  const { ref, inView } = useSectionInView()
 
-    return (
-        <ContainerContact isActive={inView} ref={ref} className={inView ? "active" : ""}>
-            <Title id="contact-section" >Contato</Title>
-            <PurpleText>Vamos conversar?</PurpleText>
-            <p>Entre em contato comigo clicando nos links abaixo por e-mail ou Linkedin:</p>
-            <IconStyle>
-                <EmailStyle>
-                <LinkIcon href="mailto:luanapdsantos@gmail.com" target="_blank">
-                    <Icon icon="line-md:email" color="#8519ff" width="80" height="80" />
-                </LinkIcon>
-                <p>luanapdsantos@gmail.com</p>
-                </EmailStyle>
-                <LinkedinStyle>
-                <LinkIcon href="https://www.linkedin.com/in/luaanaapereiraa" target="_blank">
-                    <Icon icon="devicon:linkedin" width="70" height="70" />
-                </LinkIcon>
-                <p>luaanaapereiraa</p>
-                </LinkedinStyle>
-            </IconStyle>
-        </ContainerContact>
-    )
-};
+  return (
+    <ContainerContact id="contact-section" $isActive={inView} ref={ref}>
+      <SectionTitle>Contato</SectionTitle>
+      <PurpleText>Vamos conversar?</PurpleText>
+      <p>Entre em contato comigo pelos links abaixo, por e-mail ou LinkedIn:</p>
+      <IconStyle>
+        <ContactCard href={`mailto:${contactInfo.email}`}>
+          <Icon icon="line-md:email" color="#8519ff" width="64" height="64" />
+          <span>{contactInfo.email}</span>
+        </ContactCard>
+        <ContactCard
+          href={contactInfo.linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Icon icon="devicon:linkedin" width="56" height="56" />
+          <span>{contactInfo.linkedinLabel}</span>
+        </ContactCard>
+      </IconStyle>
+    </ContainerContact>
+  )
+}
 
-export default Contact;
+export default Contact
