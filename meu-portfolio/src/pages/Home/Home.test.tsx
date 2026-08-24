@@ -10,7 +10,7 @@ describe('Home', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /Luana sou Desenvolvedora de Software Front end/i,
+        name: /Luana sou Desenvolvedora de Software Full Cycle/i,
       })
     ).toBeInTheDocument()
     expect(screen.getByText(/Marketing Digital/i)).toBeInTheDocument()

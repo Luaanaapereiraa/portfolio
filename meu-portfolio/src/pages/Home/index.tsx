@@ -16,15 +16,16 @@ const Home = () => {
     <ContainerHome id="home-section" $isActive={inView} ref={ref}>
       <ContainerText>
         <AboutPurple>Olá, meu nome é</AboutPurple>
-        <MyName>Luana sou Desenvolvedora de Software Front end</MyName>
-        <About>
+                <MyName>Luana sou Engenheira de Software</MyName>
+                <About>
           Tenho experiência em Marketing Digital e fiz uma transição para Desenvolvimento
-          Web. Me considero uma pessoa curiosa e criativa, além de autodidata e apaixonada
+          Web e mobile. Me considero uma pessoa curiosa e criativa, além de autodidata e apaixonada
           por aprendizado. Estudo inglês por conta própria e acredito que, na área
           tecnológica, sempre há algo novo para aprender e evoluir. Atualmente, estou
           focada no desenvolvimento das minhas habilidades técnicas em JavaScript, React,
-          AWS, TypeScript, Node, GraphQL e React Native para mobile. Estou entusiasmada em
-          continuar aprendendo e compartilhar meus conhecimentos com outras pessoas.
+          TypeScript, Node.js, NestJS, GraphQL, MongoDB, MySQL, Azure, testes (unitários e E2E) e React Native
+          para mobile. Estou entusiasmada em continuar aprendendo e compartilhar meus
+          conhecimentos com outras pessoas.
         </About>
       </ContainerText>
 

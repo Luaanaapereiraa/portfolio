@@ -1,7 +1,8 @@
-import { skills } from '../../data/skills'
+import { Icon } from '@iconify/react'
+import { skillGroups } from '../../data/skills'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import { SectionTitle } from '../../styles/shared'
-import { ContainerSkills, Grid, ImageWrapper } from './styles'
+import { CategoryTitle, ContainerSkills, Grid, ImageWrapper, SkillCategory } from './styles'
 
 const Skills = () => {
   const { ref, inView } = useSectionInView()
@@ -9,14 +10,25 @@ const Skills = () => {
   return (
     <ContainerSkills id="skills-section" $isActive={inView} ref={ref}>
       <SectionTitle>Skills</SectionTitle>
-      <Grid>
-        {skills.map((skill) => (
-          <ImageWrapper key={skill.name}>
-            <img src={skill.icon} alt="" />
-            <span>{skill.name}</span>
-          </ImageWrapper>
-        ))}
-      </Grid>
+      {skillGroups.map((group) => (
+        <SkillCategory key={group.title}>
+          <CategoryTitle>{group.title}</CategoryTitle>
+          <Grid>
+            {group.items.map((skill) => (
+              <ImageWrapper key={skill.name}>
+                <Icon
+                  icon={skill.icon}
+                  width={48}
+                  height={48}
+                  color={skill.color}
+                  aria-hidden
+                />
+                <span>{skill.name}</span>
+              </ImageWrapper>
+            ))}
+          </Grid>
+        </SkillCategory>
+      ))}
     </ContainerSkills>
   )
 }

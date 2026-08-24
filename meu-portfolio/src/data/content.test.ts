@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { navItems } from './nav'
 import { projects } from './projects'
-import { skills } from './skills'
+import { skillGroups, skills } from './skills'
 import { contactInfo, getWhatsAppUrl } from './contact'
 
 describe('navItems', () => {
@@ -16,11 +16,22 @@ describe('navItems', () => {
 })
 
 describe('skills', () => {
-  it('tem nomes únicos e ícones definidos', () => {
+  it('tem nomes únicos, ícones e categorias de full cycle', () => {
     const names = skills.map((skill) => skill.name)
+    const groupTitles = skillGroups.map((group) => group.title)
 
     expect(skills.length).toBeGreaterThan(0)
     expect(new Set(names).size).toBe(names.length)
+    expect(groupTitles).toEqual([
+      'Frontend',
+      'Backend',
+      'Cloud & DevOps',
+      'Qualidade',
+      'Colaboração',
+    ])
+    expect(names).toEqual(
+      expect.arrayContaining(['NestJS', 'MongoDB', 'MySQL', 'Axios', 'Azure', 'Playwright'])
+    )
     skills.forEach((skill) => {
       expect(skill.icon).toBeTruthy()
     })

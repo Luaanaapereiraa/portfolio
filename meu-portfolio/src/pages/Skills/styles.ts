@@ -15,17 +15,30 @@ export const ContainerSkills = styled.section<{ $isActive?: boolean }>`
   ${sectionFade}
 `
 
+export const SkillCategory = styled.div`
+  width: 100%;
+  margin-bottom: 2.25rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`
+
+export const CategoryTitle = styled.h3`
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 700;
+  color: ${(props) => props.theme['purple-400']};
+  text-align: center;
+  margin-bottom: 1.5rem;
+`
+
 export const Grid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 2.5rem 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1.75rem 1rem;
   justify-items: center;
-
-  ${media.md} {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.75rem 1rem;
-  }
 
   ${media.sm} {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -41,11 +54,10 @@ export const ImageWrapper = styled.div`
   text-align: center;
   width: 100%;
 
-  img {
+  svg {
     width: 48px;
     height: 48px;
     object-fit: contain;
-    padding: 0;
     transition: transform 0.3s ease-in-out;
 
     @media (hover: hover) {
