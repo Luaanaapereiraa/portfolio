@@ -19,11 +19,13 @@ vi.mock('react-scroll', () => ({
     to,
     children,
     onClick,
+    ...props
   }: {
     to: string
     children: ReactNode
     onClick?: () => void
-  }) => createElement('a', { href: `#${to}`, onClick }, children),
+    [key: string]: unknown
+  }) => createElement('a', { href: `#${to}`, onClick, ...props }, children),
 }))
 
 vi.mock('@iconify/react', () => ({

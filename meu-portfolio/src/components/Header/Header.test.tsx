@@ -6,6 +6,12 @@ import { renderWithTheme } from '../../test/render'
 import Header from './index'
 
 describe('Header', () => {
+  it('renderiza o logo', () => {
+    renderWithTheme(<Header />)
+
+    expect(screen.getByRole('link', { name: 'Ir para o início' })).toBeInTheDocument()
+  })
+
   it('renderiza os links de navegação', () => {
     renderWithTheme(<Header />)
 

@@ -2,15 +2,31 @@ import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-scroll'
 import { media } from '../../styles/breakpoints'
 
-const waveAnimation = keyframes`
-  0% { color: #e94ffe; }
-  12.5% { color: #c933ff; }
-  37.5% { color: #a726ff; }
-  50% { color: #8519ff; }
-  62.5% { color: #ad14c4; }
-  75% { color: #9900b1; }
-  87.5% { color: #85009e; }
-  100% { color: #71008c; }
+const borderGlow = keyframes`
+  0% {
+    border-color: #e94ffe;
+    box-shadow: 0 0 16px rgba(233, 79, 254, 0.5);
+  }
+  20% {
+    border-color: #c933ff;
+    box-shadow: 0 0 16px rgba(201, 51, 255, 0.5);
+  }
+  40% {
+    border-color: #a726ff;
+    box-shadow: 0 0 16px rgba(167, 38, 255, 0.5);
+  }
+  60% {
+    border-color: #8519ff;
+    box-shadow: 0 0 16px rgba(133, 25, 255, 0.5);
+  }
+  80% {
+    border-color: #ad14c4;
+    box-shadow: 0 0 16px rgba(173, 20, 196, 0.5);
+  }
+  100% {
+    border-color: #e94ffe;
+    box-shadow: 0 0 16px rgba(233, 79, 254, 0.5);
+  }
 `
 
 export const HeaderWrapper = styled.header`
@@ -41,24 +57,32 @@ export const BrandLink = styled(Link)`
   flex-shrink: 0;
 `
 
-export const WaveText = styled.span`
-  animation: ${waveAnimation} 8s linear infinite;
-  font-size: clamp(1.85rem, 5vw, 2.5rem);
-  font-weight: 600;
-  font-family: 'Mrs Saint Delafield', cursive;
-  border: 1px solid currentColor;
-  border-radius: 100%;
-  width: 3rem;
-  height: 3rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  box-shadow: 0 0 22px ${(props) => props.theme.glow};
+export const LogoMark = styled.span`
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border-radius: 0.8rem;
+  font-family: Syne, sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.08em;
+  color: ${(props) => props.theme.white};
+  background: ${(props) => props.theme.bg};
+  border: 1.5px solid #e94ffe;
+  animation: ${borderGlow} 8s linear infinite;
+  transition: transform 0.25s ease;
+
+  @media (hover: hover) {
+    ${BrandLink}:hover & {
+      transform: translateY(-1px);
+    }
+  }
 
   ${media.sm} {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.15rem;
   }
 `
 

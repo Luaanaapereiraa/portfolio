@@ -4,11 +4,11 @@ import { navItems } from '../../data/nav'
 import {
   BrandLink,
   HeaderWrapper,
+  LogoMark,
   MenuButton,
   Nav,
   NavItem,
   NavList,
-  WaveText,
 } from './styles'
 
 function MenuIcon({ isOpen }: { isOpen: boolean }) {
@@ -62,7 +62,7 @@ const Header = () => {
           onClick={closeMenu}
           aria-label="Ir para o início"
         >
-          <WaveText>L</WaveText>
+          <LogoMark aria-hidden="true">L</LogoMark>
         </BrandLink>
 
         <MenuButton
