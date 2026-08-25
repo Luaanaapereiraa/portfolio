@@ -1,17 +1,47 @@
-# Meu Portfólio
+# Luana Pereira — Portfólio
 
-Este é o meu projeto de site do portfólio, onde compartilho os links dos meus projetos do GitHub. O site é responsivo e foi construído utilizando as seguintes tecnologias:
+Site pessoal de [Luana Pereira](https://www.linkedin.com/in/luaanaapereiraa), engenheira de software. Apresenta perfil, skills, projetos e formas de contato.
 
-- React: uma biblioteca JavaScript para construir interfaces de usuário.
-- TypeScript: um superconjunto tipado do JavaScript.
-- Vite: um bundler e servidor de desenvolvimento rápido.
-- Styled Components: uma biblioteca para escrever CSS em componentes JavaScript.
+**Ao vivo:** [https://luanapereira.vercel.app/](https://luanapereira.vercel.app/)
 
-## Pré-requisitos
+## Stack
 
-Antes de começar, certifique-se de ter o Node.js e o npm (ou yarn) instalados em sua máquina.
+- React 18 + TypeScript
+- Vite
+- Styled Components
+- Vitest + Testing Library
+- React Scroll e Intersection Observer para navegação e animações de seção
 
-## Link do projeto :
- https://luanapereira.vercel.app/ 
+## Como rodar
 
+O app fica em `meu-portfolio/` (não na raiz do repositório).
 
+Pré-requisitos: Node.js 18+ e npm.
+
+```bash
+cd meu-portfolio
+npm install
+npm run dev
+```
+
+Abra [http://localhost:5173/](http://localhost:5173/).
+
+## Scripts
+
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm test` | Testes unitários (uma vez) |
+| `npm run test:watch` | Testes em modo watch |
+| `npm run lint` | ESLint |
+| `npm run build` | Type-check + build de produção |
+| `npm run preview` | Preview do build |
+
+## O que tem no site
+
+- **Home** — apresentação e foto
+- **Skills** — frontend, backend, cloud, qualidade e colaboração
+- **Projetos** — links para repositórios no GitHub
+- **Contato** — e-mail, LinkedIn e WhatsApp
+
+O layout é responsivo, com menu mobile no header.
