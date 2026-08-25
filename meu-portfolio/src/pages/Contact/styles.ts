@@ -1,117 +1,70 @@
-import styled, { keyframes } from "styled-components";
+import styled from 'styled-components'
+import { sectionFade } from '../../styles/animations'
+import { media } from '../../styles/breakpoints'
+import { cardHover, glass, pageWrap } from '../../styles/mixins'
 
-const fadeIn = keyframes`
-from {
-    opacity: 0;
-    transform: translateY(50px);
-    }
-to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+export const ContainerContact = styled.section<{ $isActive?: boolean }>`
+  ${pageWrap}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  text-align: center;
+  scroll-margin-top: 5rem;
+  ${sectionFade}
+
+  p {
+    max-width: 34rem;
+    line-height: 1.65;
+    padding: 0 0.5rem;
+    color: ${(props) => props.theme['gray-300']};
+  }
 `
 
-export const ContainerContact = styled.div<{ isActive?: boolean }>`
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1rem; 
-    margin-bottom: 2rem;
-    padding: 1rem;
-    margin: 0 auto;
-
-    opacity: ${(props) => (props.isActive ? "1" : "0")};
-    transform: translateY(${(props) => (props.isActive ? "0" : "20px")});
-    transition: opacity 500ms, transform 500ms;
-    animation: ${fadeIn}  700ms ease-in-out;
-
-    
-    @media (max-width: 768px) {
-        margin-top: 50px;
-    }
-`;
-
-export const Title = styled.h1`
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    margin-top: 3rem;
-    color: ${(props) => props.theme['purple-300']};
-    text-align: center;
-    font-family: 'Roboto Mono', monospace;
-
-    text-shadow: 
-                -1px -1px 0px  ${(props) => props.theme['white']}, 
-                -1px 1px 0px  ${(props) => props.theme['purple-400']},                    
-                1px -1px 0px ${(props) => props.theme['purple-400']},                  
-                1px 0px 0px  ${(props) => props.theme['purple-400']};
-
-  
-
-`;
-
 export const PurpleText = styled.p`
-font-size: 1.1rem;
-    font-family: 'Roboto Mono', monospace;
-    color: ${(props) => props.theme['purple-400']};
-
-`;
-
-export const LinkIcon = styled.a`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-padding: 0.5;
-&:hover {
-    color: ${(props) => props.theme['purple-300']};
-    transform: scale(1.1);
-    }
-`;
+  font-size: 0.92rem;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 0.08em;
+  color: ${(props) => props.theme['purple-300']};
+  margin-bottom: 0.65rem;
+`
 
 export const IconStyle = styled.div`
-    max-width: 800px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 4rem;
-    margin-top: 2rem;
-    padding: 1rem;
-    transition: background-color 0.3s ease-in-out;  
-    
-`;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 52rem;
 
-export const EmailStyle = styled.div`
-    border-color: ${(props) => props.theme['purple-400']};
-    border-style: solid;
-    border-width: 1px;
-    padding: 1rem;
-    transition: background-color 0.3s ease-in-out;
-    border-radius: 0.5rem;
-    p{
-        
-        font-family: 'Roboto Mono', monospace;
-        
-    }
-`;
+  ${media.md} {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    max-width: 24rem;
+  }
+`
 
-export const LinkedinStyle = styled.div`
-    border-color: ${(props) => props.theme['purple-400']};
-    border-style: solid;
-    border-width: 1px;
-    padding: 1rem;
-    transition: background-color 0.3s ease-in-out;
-    border-radius: 0.5rem;
-    display: flex;
-        justify-items: center;
-        align-items: center;
-        flex-direction: column;
-        gap: 0.5rem;
+export const ContactCard = styled.a`
+  ${glass}
+  ${cardHover}
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.4rem 1rem;
+  min-width: 0;
+  border-radius: 1.25rem;
+  text-decoration: none;
+  color: ${(props) => props.theme['gray-100']};
 
-    p{
-        
-        font-family: 'Roboto Mono', monospace;
-        
-    }
-`;
+  span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+    word-break: break-word;
+    text-align: center;
+  }
+`
