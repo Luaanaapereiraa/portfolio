@@ -16,7 +16,7 @@ Site pessoal de [Luana Pereira](https://www.linkedin.com/in/luaanaapereiraa), en
 
 O app fica em `meu-portfolio/` (não na raiz do repositório).
 
-Pré-requisitos: Node.js 18+ e npm.
+Pré-requisitos: Node.js 24 e npm.
 
 ```bash
 cd meu-portfolio
