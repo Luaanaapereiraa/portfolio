@@ -16,7 +16,7 @@ describe('Home', () => {
     expect(screen.getByText('Engenheira de Software')).toBeInTheDocument()
     expect(screen.getByText(/Marketing Digital/i)).toBeInTheDocument()
     expect(
-      screen.getByAltText(/Ilustração de uma desenvolvedora/i)
+      screen.getByAltText(/Luana, engenheira de software/i)
     ).toBeInTheDocument()
   })
 })

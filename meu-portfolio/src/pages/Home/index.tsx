@@ -1,4 +1,4 @@
-import homeIllustration from '../../assets/home-illustration.svg'
+import homeIllustration from '../../assets/home-illustration.png'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import {
   About,
@@ -34,7 +34,7 @@ const Home = () => {
       <Illustration>
         <img
           src={homeIllustration}
-          alt="Ilustração de uma desenvolvedora trabalhando no computador"
+          alt="Luana, engenheira de software, com elementos de tecnologia ao redor"
         />
       </Illustration>
     </ContainerHome>
