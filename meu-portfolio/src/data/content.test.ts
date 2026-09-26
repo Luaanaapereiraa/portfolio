@@ -30,7 +30,18 @@ describe('skills', () => {
       'Colaboração',
     ])
     expect(names).toEqual(
-      expect.arrayContaining(['NestJS', 'MongoDB', 'MySQL', 'Axios', 'Azure', 'Playwright'])
+      expect.arrayContaining([
+        'NestJS',
+        'Fastify',
+        'PostgreSQL',
+        'Supabase',
+        'MongoDB',
+        'MySQL',
+        'Axios',
+        'AWS',
+        'Azure',
+        'Playwright',
+      ])
     )
     skills.forEach((skill) => {
       expect(skill.icon).toBeTruthy()
@@ -39,15 +50,28 @@ describe('skills', () => {
 })
 
 describe('projects', () => {
-  it('expõe projetos com título, descrição e link válido', () => {
+  it('expõe projetos com título, descrição, stack e links válidos', () => {
     expect(projects.length).toBeGreaterThan(0)
+    expect(new Set(projects.map((project) => project.id)).size).toBe(projects.length)
 
     projects.forEach((project) => {
       expect(project.title).toBeTruthy()
+      expect(project.tagline).toBeTruthy()
       expect(project.description).toBeTruthy()
-      expect(project.image).toBeTruthy()
-      expect(project.link).toMatch(/^https:\/\//)
+      expect(project.stack.length).toBeGreaterThan(0)
+      expect(project.links.length).toBeGreaterThan(0)
+      project.links.forEach((link) => {
+        expect(link.href).toMatch(link.external ? /^https:\/\// : /^#/)
+      })
     })
+  })
+
+  it('destaca o DestravAI e não lista mais o PomodoroDev', () => {
+    const featured = projects.filter((project) => project.featured)
+
+    expect(featured.map((project) => project.title)).toEqual(['DestravAI'])
+    expect(featured[0].highlights?.length).toBeGreaterThan(0)
+    expect(projects.some((project) => /pomodoro/i.test(project.title))).toBe(false)
   })
 })
 
