@@ -31,8 +31,12 @@ export const skillGroups: SkillGroup[] = [
     items: [
       { name: 'Node.js', icon: 'logos:nodejs-icon' },
       { name: 'NestJS', icon: 'logos:nestjs' },
+      { name: 'Fastify', icon: 'simple-icons:fastify', color: '#FFFFFF' },
       { name: 'GraphQL', icon: 'logos:graphql' },
       { name: 'REST APIs', icon: 'mdi:api', color: '#8519ff' },
+      { name: 'Zod', icon: 'logos:zod' },
+      { name: 'PostgreSQL', icon: 'logos:postgresql' },
+      { name: 'Supabase', icon: 'logos:supabase-icon' },
       { name: 'MongoDB', icon: 'logos:mongodb-icon' },
       { name: 'MySQL', icon: 'logos:mysql' },
     ],
@@ -40,6 +44,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Cloud & DevOps',
     items: [
+      { name: 'AWS', icon: 'logos:aws', color: '#FFFFFF' },
       { name: 'Azure', icon: 'logos:microsoft-azure' },
       { name: 'Docker', icon: 'logos:docker-icon' },
       { name: 'CI/CD', icon: 'simple-icons:githubactions', color: '#2088FF' },

@@ -1,19 +1,45 @@
-import { screen } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import { projects } from '../../data/projects'
 import { renderWithTheme } from '../../test/render'
 import Portfolio from './index'
 
 describe('Portfolio', () => {
-  it('renderiza os projetos com link para o GitHub', () => {
+  it('renderiza cada projeto com seus links', () => {
     renderWithTheme(<Portfolio />)
 
     expect(screen.getByRole('heading', { name: 'Projetos' })).toBeInTheDocument()
 
     projects.forEach((project) => {
-      const link = screen.getByRole('link', { name: new RegExp(project.title, 'i') })
-      expect(link).toHaveAttribute('href', project.link)
-      expect(link).toHaveAttribute('target', '_blank')
+      const card = screen.getByRole('article', { name: project.title })
+
+      project.links.forEach((link) => {
+        const anchor = within(card).getByRole('link', {
+          name: `${link.label} — ${project.title}`,
+        })
+        expect(anchor).toHaveAttribute('href', link.href)
+
+        if (link.external) {
+          expect(anchor).toHaveAttribute('target', '_blank')
+          expect(anchor).toHaveAttribute('rel', 'noopener noreferrer')
+        } else {
+          expect(anchor).not.toHaveAttribute('target')
+        }
+      })
     })
+  })
+
+  it('mostra o DestravAI em destaque com os diferenciais técnicos', () => {
+    renderWithTheme(<Portfolio />)
+
+    const card = screen.getByRole('article', { name: 'DestravAI' })
+    expect(within(card).getByText('Em desenvolvimento')).toBeInTheDocument()
+    expect(
+      within(card).getByRole('list', { name: /Destaques técnicos do DestravAI/i })
+    ).toBeInTheDocument()
+    expect(within(card).getByRole('link', { name: /Pedir uma demo/i })).toHaveAttribute(
+      'href',
+      '#contact-section'
+    )
   })
 })
