@@ -5,6 +5,12 @@ import { navItems } from '../../data/nav'
 import { renderWithTheme } from '../../test/render'
 import Header from './index'
 
+// O botão só aparece no breakpoint mobile (media.md). Como o jsdom não avalia
+// media queries, ele fica com display: none aqui; por isso a busca é feita
+// pelo aria-label, que independe da visibilidade.
+const getMenuButton = (name: string) =>
+  screen.getByLabelText(name, { selector: 'button' })
+
 describe('Header', () => {
   it('renderiza o logo', () => {
     renderWithTheme(<Header />)
@@ -27,18 +33,18 @@ describe('Header', () => {
     const user = userEvent.setup()
     renderWithTheme(<Header />)
 
-    const menuButton = screen.getByRole('button', { name: 'Abrir menu' })
+    const menuButton = getMenuButton('Abrir menu')
     expect(menuButton).toHaveAttribute('aria-expanded', 'false')
 
     await user.click(menuButton)
 
-    expect(screen.getByRole('button', { name: 'Fechar menu' })).toHaveAttribute(
+    expect(getMenuButton('Fechar menu')).toHaveAttribute(
       'aria-expanded',
       'true'
     )
 
-    await user.click(screen.getByRole('button', { name: 'Fechar menu' }))
-    expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
+    await user.click(getMenuButton('Fechar menu'))
+    expect(getMenuButton('Abrir menu')).toHaveAttribute(
       'aria-expanded',
       'false'
     )
@@ -48,10 +54,10 @@ describe('Header', () => {
     const user = userEvent.setup()
     renderWithTheme(<Header />)
 
-    await user.click(screen.getByRole('button', { name: 'Abrir menu' }))
+    await user.click(getMenuButton('Abrir menu'))
     fireEvent.keyDown(window, { key: 'Escape' })
 
-    expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
+    expect(getMenuButton('Abrir menu')).toHaveAttribute(
       'aria-expanded',
       'false'
     )
@@ -61,10 +67,10 @@ describe('Header', () => {
     const user = userEvent.setup()
     renderWithTheme(<Header />)
 
-    await user.click(screen.getByRole('button', { name: 'Abrir menu' }))
+    await user.click(getMenuButton('Abrir menu'))
     await user.click(screen.getByRole('link', { name: '//Skills' }))
 
-    expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
+    expect(getMenuButton('Abrir menu')).toHaveAttribute(
       'aria-expanded',
       'false'
     )

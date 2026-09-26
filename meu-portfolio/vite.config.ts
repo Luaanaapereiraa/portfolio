@@ -9,5 +9,8 @@ export default defineConfig({
     setupFiles: './src/test/setup.ts',
     css: false,
     restoreMocks: true,
+    // Com o CSS do styled-components injetado no jsdom, queries por role
+    // (que calculam estilos) ficam mais lentas nas páginas grandes.
+    testTimeout: 15000,
   },
 })
