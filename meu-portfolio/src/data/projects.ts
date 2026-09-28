@@ -26,11 +26,11 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'destravai',
-    title: 'DestravAI',
+    id: 'boxstep',
+    title: 'BoxStep',
     tagline: 'Produtividade com IA: de tarefa travada a plano de ação',
     description:
-      'Aplicação que usa um agente de IA para transformar tarefas travadas em planos claros e executáveis. Produto que estou construindo de ponta a ponta — da definição do problema à arquitetura, testes e deploy.',
+      'Aplicação que usa um agente de IA para transformar tarefas travadas em planos claros e executáveis. Produto que estou construindo de ponta a ponta, da definição do problema à arquitetura, testes e deploy.',
     status: 'Em desenvolvimento',
     featured: true,
     highlights: [
@@ -45,11 +45,11 @@ export const projects: Project[] = [
     links: [{ label: 'Pedir uma demo', href: '#contact-section' }],
   },
   {
-    id: 'dashboard-hvac',
-    title: 'Dashboard HVAC',
-    tagline: 'Acompanhamento de obras de climatização',
+    id: 'dashboard',
+    title: 'Dashboard',
+    tagline: 'Acompanhamento de obras',
     description:
-      'Painel para acompanhar a execução de obras de HVAC por equipamento: progresso por etapa, planejamento semanal, métricas, evidências em foto e geração de RDO.',
+      'Painel para acompanhar a execução de obras por equipamento: progresso por etapa, planejamento semanal, métricas, evidências em foto e geração de RDO.',
     status: 'Em produção',
     stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
     links: [

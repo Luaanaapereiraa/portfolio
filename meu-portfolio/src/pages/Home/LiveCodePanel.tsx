@@ -5,7 +5,7 @@ import { CodeLine, Cursor, Dot, Glass, PanelHeader, PanelWrap, Token } from './L
 export type TokenKind = 'keyword' | 'ident' | 'fn' | 'punct' | 'comment'
 type Line = [text: string, kind: TokenKind][]
 
-// Trecho ilustrativo do fluxo do DestravAI: agente com saída estruturada (Zod).
+// Trecho ilustrativo do fluxo do BoxStep: agente com saída estruturada (Zod).
 // Só as ~5 primeiras linhas ficam visíveis — o resto do painel fica atrás do notebook.
 const codeLines: Line[] = [
   [['const ', 'keyword'], ['plano', 'ident'], [' = ', 'punct'], ['await ', 'keyword'], ['agente', 'ident']],
@@ -74,7 +74,7 @@ export function LiveCodePanel() {
           <Dot $color="#f472b6" />
           <Dot $color="#c4b5fd" />
           <Dot $color="#c4b5fd" />
-          <span>destravar.ts</span>
+          <span>boxstep.ts</span>
         </PanelHeader>
         <pre>
           {codeLines.map((line, lineIndex) => {

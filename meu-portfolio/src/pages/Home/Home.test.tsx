@@ -14,10 +14,13 @@ describe('Home', () => {
         name: 'Luana',
       })
     ).toBeInTheDocument()
-    expect(screen.getByText(/Engenheira de Software · Full Stack/)).toBeInTheDocument()
+    // cargo: cópia estática (leitores de tela) + cópia animada (scramble) escondida deles
+    const roleCopies = screen.getAllByText(/Engenheira de Software · Full Stack/)
+    expect(roleCopies).toHaveLength(2)
+    expect(roleCopies.filter((el) => el.getAttribute('aria-hidden') === 'true')).toHaveLength(1)
     expect(screen.getByText(/Aberta a oportunidades/i)).toBeInTheDocument()
     expect(screen.getByText('XP Inc.')).toBeInTheDocument()
-    expect(screen.getByText(/Hoje estou construindo o/)).toHaveTextContent('DestravAI')
+    expect(screen.getByText(/Hoje estou construindo o/)).toHaveTextContent('BoxStep')
     expect(
       screen.getByAltText(/Luana, engenheira de software/i)
     ).toBeInTheDocument()
@@ -26,7 +29,7 @@ describe('Home', () => {
   it('mostra os destaques flutuando ao redor da foto', () => {
     renderWithTheme(<Home />)
 
-    expect(screen.getByText(/Construindo o/)).toHaveTextContent('Construindo o DestravAI')
+    expect(screen.getByText(/Construindo o/)).toHaveTextContent('Construindo o BoxStep')
     expect(screen.getByText(/XP Inc\. · Pipefy/)).toBeInTheDocument()
     expect(screen.getByLabelText('Stack: React, Node.js, Supabase')).toBeInTheDocument()
   })

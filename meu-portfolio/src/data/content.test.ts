@@ -66,10 +66,10 @@ describe('projects', () => {
     })
   })
 
-  it('destaca o DestravAI e não lista mais o PomodoroDev', () => {
+  it('destaca o BoxStep e não lista mais o PomodoroDev', () => {
     const featured = projects.filter((project) => project.featured)
 
-    expect(featured.map((project) => project.title)).toEqual(['DestravAI'])
+    expect(featured.map((project) => project.title)).toEqual(['BoxStep'])
     expect(featured[0].highlights?.length).toBeGreaterThan(0)
     expect(projects.some((project) => /pomodoro/i.test(project.title))).toBe(false)
   })

@@ -9,6 +9,7 @@ import {
   Nav,
   NavItem,
   NavList,
+  ScrollProgress,
 } from './styles'
 
 function MenuIcon({ isOpen }: { isOpen: boolean }) {
@@ -91,6 +92,7 @@ const Header = () => {
           ))}
         </NavList>
       </Nav>
+      <ScrollProgress aria-hidden="true" />
     </HeaderWrapper>
   )
 }

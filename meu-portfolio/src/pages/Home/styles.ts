@@ -82,10 +82,21 @@ export const MyName = styled.h1`
 `
 
 export const Role = styled.p`
+  position: relative;
   margin-top: 0.7rem;
   font-family: 'Roboto Mono', monospace;
   font-size: clamp(0.95rem, 2.4vw, 1.15rem);
   color: ${(props) => props.theme['purple-200']};
+`
+
+export const RoleSizer = styled.span`
+  color: transparent;
+`
+
+/** Cópia animada (scramble) sobreposta à RoleSizer, com a mesma quebra de linha. */
+export const RoleScramble = styled.span`
+  position: absolute;
+  inset: 0;
 `
 
 export const About = styled.p`
