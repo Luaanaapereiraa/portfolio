@@ -71,9 +71,9 @@ export function LiveCodePanel() {
     <PanelWrap style={style} aria-hidden="true" data-testid="live-code-panel">
       <Glass>
         <PanelHeader>
-          <Dot $color="#f472b6" />
-          <Dot $color="#c4b5fd" />
-          <Dot $color="#c4b5fd" />
+          <Dot $color="#00e0ff" />
+          <Dot $color="#24505b" />
+          <Dot $color="#24505b" />
           <span>boxstep.ts</span>
         </PanelHeader>
         <pre>

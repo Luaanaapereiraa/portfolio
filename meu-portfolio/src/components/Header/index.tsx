@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-scroll'
 import { navItems } from '../../data/nav'
 import {
+  BrandId,
   BrandLink,
   HeaderWrapper,
   LogoMark,
   MenuButton,
   Nav,
+  NavIndex,
   NavItem,
   NavList,
   ScrollProgress,
@@ -64,6 +66,10 @@ const Header = () => {
           aria-label="Ir para o início"
         >
           <LogoMark aria-hidden="true">L</LogoMark>
+          <BrandId aria-hidden="true">
+            <strong>Luana Pereira</strong>
+            Eng. de software · SP
+          </BrandId>
         </BrandLink>
 
         <MenuButton
@@ -77,7 +83,7 @@ const Header = () => {
         </MenuButton>
 
         <NavList id="main-navigation" $isOpen={isMenuOpen}>
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <NavItem key={item.to}>
               <Link
                 to={item.to}
@@ -86,6 +92,7 @@ const Header = () => {
                 offset={-80}
                 onClick={closeMenu}
               >
+                <NavIndex aria-hidden="true">{String(index + 1).padStart(2, '0')}</NavIndex>
                 {item.label}
               </Link>
             </NavItem>

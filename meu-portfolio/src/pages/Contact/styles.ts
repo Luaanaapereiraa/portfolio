@@ -1,35 +1,32 @@
 import styled from 'styled-components'
 import { sectionFade } from '../../styles/animations'
 import { media } from '../../styles/breakpoints'
-import { cardHover, glass, pageWrap } from '../../styles/mixins'
+import { cardHover, hudPanel, monoLabel, pageWrap } from '../../styles/mixins'
 
 export const ContainerContact = styled.section<{ $isActive?: boolean }>`
   ${pageWrap}
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   margin: 0 auto;
   padding-top: 1rem;
   padding-bottom: 4rem;
-  text-align: center;
   scroll-margin-top: 5rem;
   ${sectionFade}
 
   p {
-    max-width: 34rem;
+    max-width: 36rem;
     line-height: 1.65;
-    padding: 0 0.5rem;
-    color: ${(props) => props.theme['gray-300']};
+    color: ${(props) => props.theme['text-dim']};
   }
 `
 
-export const PurpleText = styled.p`
-  font-size: 0.92rem;
-  font-family: 'Roboto Mono', monospace;
-  letter-spacing: 0.08em;
-  color: ${(props) => props.theme['purple-300']};
-  margin-bottom: 0.65rem;
+export const AccentText = styled.p`
+  ${monoLabel}
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: ${(props) => props.theme.accent} !important;
+  margin-bottom: 0.5rem;
 `
 
 export const IconStyle = styled.div`
@@ -38,33 +35,47 @@ export const IconStyle = styled.div`
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 2rem;
-  max-width: 52rem;
 
   ${media.md} {
     grid-template-columns: 1fr;
-    gap: 0.85rem;
-    max-width: 24rem;
+    gap: 0.75rem;
   }
 `
 
 export const ContactCard = styled.a`
-  ${glass}
+  ${hudPanel}
   ${cardHover}
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1.4rem 1rem;
+  gap: 1rem;
+  padding: 1.25rem;
   min-width: 0;
-  border-radius: 1.25rem;
   text-decoration: none;
-  color: ${(props) => props.theme['gray-100']};
+  color: ${(props) => props.theme.text};
+
+  svg {
+    flex-shrink: 0;
+  }
 
   span {
-    font-family: 'Roboto Mono', monospace;
-    font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+    font-family: ${(props) => props.theme.fonts.mono};
+    font-size: 0.82rem;
     word-break: break-word;
-    text-align: center;
+  }
+
+  small {
+    ${monoLabel}
+    font-size: 0.64rem;
+    color: ${(props) => props.theme['text-faint']};
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: ${(props) => props.theme.white};
+    }
   }
 `

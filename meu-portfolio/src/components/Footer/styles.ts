@@ -1,22 +1,34 @@
 import styled from 'styled-components'
 import { media } from '../../styles/breakpoints'
+import { monoLabel, pageWrap } from '../../styles/mixins'
 
 export const ContainerFooter = styled.footer`
-  padding: 1.35rem 1rem;
+  border-top: 1px solid ${(props) => props.theme.line};
+`
+
+/** Linha de status: autoria à esquerda, versão/local à direita. */
+export const StatusBar = styled.div`
+  ${pageWrap}
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  border-top: 1px solid ${(props) => props.theme.border};
+  gap: 1rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  ${monoLabel}
+  font-size: 0.68rem;
+  color: ${(props) => props.theme['text-faint']};
 
-  p {
-    font-size: 0.9rem;
-    font-family: 'Roboto Mono', monospace;
-    color: ${(props) => props.theme['gray-400']};
-    padding: 0 0.5rem;
-
-    ${media.sm} {
-      font-size: 0.8rem;
-    }
+  p:first-child {
+    color: ${(props) => props.theme['text-dim']};
   }
+
+  ${media.sm} {
+    flex-direction: column;
+    text-align: center;
+  }
+`
+
+export const Online = styled.span`
+  color: ${(props) => props.theme.accent};
 `

@@ -12,7 +12,7 @@ describe('App', () => {
     expect(screen.getByRole('heading', { name: 'Projetos' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Contato' })).toBeInTheDocument()
     expect(
-      screen.getByText('Designed & Developed by Luana Pereira')
+      screen.getByText('Projetado e desenvolvido por Luana Pereira')
     ).toBeInTheDocument()
   })
 })

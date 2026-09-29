@@ -3,7 +3,14 @@ import { skillGroups } from '../../data/skills'
 import { useStaggerReveal, type RevealGroup } from '../../animations/useStaggerReveal'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import { SectionTitle } from '../../styles/shared'
-import { CategoryTitle, ContainerSkills, Grid, ImageWrapper, SkillCategory } from './styles'
+import {
+  CategoryCount,
+  CategoryTitle,
+  ContainerSkills,
+  Grid,
+  ImageWrapper,
+  SkillCategory,
+} from './styles'
 
 const revealGroups: RevealGroup[] = [
   {
@@ -27,10 +34,15 @@ const Skills = () => {
         revealScope.current = node
       }}
     >
-      <SectionTitle data-kicker="// skills">Skills</SectionTitle>
+      <SectionTitle data-kicker="[02] // stack técnica">Skills</SectionTitle>
       {skillGroups.map((group) => (
         <SkillCategory key={group.title} data-anim="skill-group">
-          <CategoryTitle>{group.title}</CategoryTitle>
+          <CategoryTitle>
+            {group.title}
+            <CategoryCount aria-hidden="true">
+              {String(group.items.length).padStart(2, '0')}
+            </CategoryCount>
+          </CategoryTitle>
           <Grid>
             {group.items.map((skill) => (
               <ImageWrapper key={skill.name} data-anim="skill">

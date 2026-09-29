@@ -8,7 +8,7 @@ describe('Footer', () => {
     renderWithTheme(<Footer />)
 
     expect(
-      screen.getByText('Designed & Developed by Luana Pereira')
+      screen.getByText('Projetado e desenvolvido por Luana Pereira')
     ).toBeInTheDocument()
   })
 })

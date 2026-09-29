@@ -1,3 +1,5 @@
+import { defaultTheme } from '../styles/themes/default'
+
 export const contactInfo = {
   email: 'luanapdsantos@gmail.com',
   linkedinUrl: 'https://www.linkedin.com/in/luaanaapereiraa',
@@ -5,6 +7,8 @@ export const contactInfo = {
   whatsappNumber: '11942455747',
   whatsappLabel: 'WhatsApp',
 } as const
+
+const ACCENT = defaultTheme.accent
 
 const DEFAULT_WHATSAPP_MESSAGE = 'Olá! Vim pelo seu portfólio.'
 
@@ -27,6 +31,8 @@ export interface ContactChannel {
   id: string
   href: string
   label: string
+  /** rótulo curto do canal, exibido acima do endereço */
+  caption: string
   icon: string
   iconColor?: string
   iconWidth: number
@@ -39,28 +45,32 @@ export const contactChannels: ContactChannel[] = [
     id: 'email',
     href: `mailto:${contactInfo.email}`,
     label: contactInfo.email,
-    icon: 'line-md:email',
-    iconColor: '#8519ff',
-    iconWidth: 64,
-    iconHeight: 64,
+    caption: 'E-mail',
+    icon: 'mdi:email-outline',
+    iconColor: ACCENT,
+    iconWidth: 28,
+    iconHeight: 28,
   },
   {
     id: 'linkedin',
     href: contactInfo.linkedinUrl,
     label: contactInfo.linkedinLabel,
-    icon: 'devicon:linkedin',
-    iconWidth: 56,
-    iconHeight: 56,
+    caption: 'LinkedIn',
+    icon: 'mdi:linkedin',
+    iconColor: ACCENT,
+    iconWidth: 28,
+    iconHeight: 28,
     external: true,
   },
   {
     id: 'whatsapp',
     href: getWhatsAppUrl(contactInfo.whatsappNumber),
     label: contactInfo.whatsappLabel,
+    caption: 'Mensagem',
     icon: 'ic:baseline-whatsapp',
-    iconColor: '#25D366',
-    iconWidth: 56,
-    iconHeight: 56,
+    iconColor: ACCENT,
+    iconWidth: 28,
+    iconHeight: 28,
     external: true,
   },
 ]

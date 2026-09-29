@@ -1,7 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { gentleFloat, glowPulse, layerFloat, sectionFade } from '../../styles/animations'
 import { media } from '../../styles/breakpoints'
-import { glass, pageWrap } from '../../styles/mixins'
+import { hudPanel, monoLabel, pageWrap } from '../../styles/mixins'
+
+const blink = keyframes`
+  50% {
+    opacity: 0;
+  }
+`
 
 export const ContainerHome = styled.section<{ $isActive?: boolean }>`
   ${pageWrap}
@@ -12,7 +18,7 @@ export const ContainerHome = styled.section<{ $isActive?: boolean }>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   overflow: visible;
   scroll-margin-top: 5rem;
   ${sectionFade}
@@ -22,7 +28,7 @@ export const ContainerHome = styled.section<{ $isActive?: boolean }>`
     min-height: calc(100vh - 2rem);
     padding-left: 2rem;
     padding-right: 2rem;
-    gap: 1.25rem;
+    gap: 2rem;
   }
 
   ${media.md} {
@@ -36,57 +42,85 @@ export const ContainerHome = styled.section<{ $isActive?: boolean }>`
 
 export const ContainerText = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: flex-start;
   flex: 0 1 auto;
   max-width: 560px;
   min-width: 0;
-  text-align: center;
-  ${glass}
-  border-radius: 1.5rem;
-  padding: 2rem 1.75rem;
+  text-align: left;
+  ${hudPanel}
+  padding: 1.75rem 1.75rem 2rem;
 
   ${media.xl} {
-    max-width: 520px;
+    max-width: 540px;
   }
 
   ${media.md} {
     width: 100%;
     flex: 1 1 auto;
     max-width: none;
-    padding: 1.6rem 1.25rem;
+    padding: 1.5rem 1.25rem;
   }
 `
 
-export const AboutPurple = styled.p`
-  padding: 0;
-  margin-bottom: 0.35rem;
-  font-size: 0.92rem;
-  font-family: 'Roboto Mono', monospace;
-  letter-spacing: 0.08em;
-  color: ${(props) => props.theme['purple-300']};
+/** Linha de leitura no topo do painel: identificação + status. */
+export const Readout = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid ${(props) => props.theme.line};
+  ${monoLabel}
+  font-size: 0.66rem;
+  color: ${(props) => props.theme['text-faint']};
+`
+
+export const Availability = styled.p`
+  color: ${(props) => props.theme.accent};
+
+  &::before {
+    content: '● ';
+    animation: ${blink} 2s steps(1) infinite;
+  }
+`
+
+export const Greeting = styled.p`
+  ${monoLabel}
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: ${(props) => props.theme.accent};
+  margin-bottom: 0.4rem;
 `
 
 export const MyName = styled.h1`
-  font-family: Syne, sans-serif;
-  font-size: clamp(2.4rem, 7vw, 4.2rem);
-  font-weight: 800;
-  margin: 0;
+  font-family: ${(props) => props.theme.fonts.display};
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
   line-height: 0.95;
-  letter-spacing: -0.05em;
-  background: linear-gradient(120deg, #ffffff 15%, #c084fc 55%, #e94ffe 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: ${(props) => props.theme.white};
+
+  /* cursor de terminal */
+  &::after {
+    content: '_';
+    color: ${(props) => props.theme.accent};
+    animation: ${blink} 1.1s steps(1) infinite;
+  }
 `
 
 export const Role = styled.p`
   position: relative;
-  margin-top: 0.7rem;
-  font-family: 'Roboto Mono', monospace;
-  font-size: clamp(0.95rem, 2.4vw, 1.15rem);
-  color: ${(props) => props.theme['purple-200']};
+  margin-top: 0.85rem;
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${(props) => props.theme['text-dim']};
 `
 
 export const RoleSizer = styled.span`
@@ -100,48 +134,22 @@ export const RoleScramble = styled.span`
 `
 
 export const About = styled.p`
-  padding-top: 1rem;
-  font-size: clamp(1rem, 2.2vw, 1.08rem);
-  font-weight: 400;
+  padding-top: 1.1rem;
+  font-size: clamp(0.98rem, 2.1vw, 1.04rem);
   line-height: 1.7;
-  text-align: center;
-  color: ${(props) => props.theme['gray-300']};
+  color: ${(props) => props.theme['text-dim']};
 
   strong {
     font-weight: 600;
-    color: ${(props) => props.theme['gray-100']};
-  }
-`
-
-export const Availability = styled.p`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.1rem;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.75rem;
-  color: #bbf7d0;
-  background: rgba(74, 222, 128, 0.08);
-  border: 1px solid rgba(74, 222, 128, 0.3);
-
-  &::before {
-    content: '';
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 8px #4ade80;
+    color: ${(props) => props.theme.white};
   }
 `
 
 export const CallToAction = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.75rem;
-  padding-top: 1.5rem;
+  padding-top: 1.75rem;
 `
 
 export const Illustration = styled.div`
@@ -157,21 +165,32 @@ export const Illustration = styled.div`
   overflow: visible;
   perspective: 1200px;
 
+  /* brilho frio bem discreto atrás da foto */
   &::before {
     content: '';
     position: absolute;
-    inset: 6% 10%;
+    inset: 10% 14%;
     border-radius: 50%;
-    background: radial-gradient(
-      ellipse at center,
-      rgba(168, 85, 247, 0.5) 0%,
-      rgba(233, 79, 254, 0.22) 40%,
-      transparent 72%
-    );
-    filter: blur(32px);
+    background: radial-gradient(ellipse at center, rgba(0, 224, 255, 0.16), transparent 70%);
+    filter: blur(30px);
     pointer-events: none;
-    z-index: 0;
     animation: ${glowPulse} 6s ease-in-out infinite;
+  }
+
+  /* anéis de radar */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(92%, 560px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid ${(props) => props.theme.line};
+    outline: 1px dashed ${(props) => props.theme.line};
+    outline-offset: -36px;
+    pointer-events: none;
   }
 
   ${media.md} {
@@ -180,9 +199,9 @@ export const Illustration = styled.div`
   }
 `
 
-const heroGlow = `
-  drop-shadow(0 0 14px rgba(192, 132, 252, 0.6))
-  drop-shadow(0 18px 32px rgba(88, 28, 135, 0.45))
+const heroShadow = `
+  drop-shadow(0 0 10px rgba(0, 224, 255, 0.18))
+  drop-shadow(0 18px 30px rgba(0, 0, 0, 0.55))
 `
 
 export const Stage = styled.div`
@@ -203,7 +222,7 @@ export const BaseImage = styled.img`
   max-height: min(70vh, 640px);
   height: auto;
   object-fit: contain;
-  filter: ${heroGlow};
+  filter: ${heroShadow};
 
   @media (min-width: 769px) {
     max-width: min(100%, 480px);
@@ -231,7 +250,7 @@ export const FloatingLayer = styled.img`
   position: absolute;
   height: auto;
   pointer-events: none;
-  filter: ${heroGlow};
+  filter: ${heroShadow};
   will-change: transform;
   animation: ${layerFloat} var(--float-duration, 6s) ease-in-out infinite;
   animation-delay: var(--float-delay, 0s);
@@ -259,30 +278,30 @@ export const ChipSlot = styled.div<{ $position: keyof typeof chipPositions }>`
 export const Chip = styled.div<{ $delay: number }>`
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.9rem;
-  border-radius: 0.9rem;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
   white-space: nowrap;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.78rem;
-  color: ${(props) => props.theme['gray-100']};
-  background: ${(props) => props.theme['surface-strong']};
-  border: 1px solid ${(props) => props.theme.border};
-  backdrop-filter: blur(14px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 12px 28px rgba(0, 0, 0, 0.4),
-    0 0 18px ${(props) => props.theme.glow};
+  ${monoLabel}
+  font-size: 0.68rem;
+  color: ${(props) => props.theme.text};
+  ${hudPanel}
+  background-color: ${(props) => props.theme['panel-solid']};
+  backdrop-filter: blur(10px);
   animation: ${gentleFloat} 5s ease-in-out infinite;
   animation-delay: -${(props) => props.$delay}s;
 
   strong {
     font-weight: 700;
-    color: ${(props) => props.theme['purple-300']};
+    color: ${(props) => props.theme.accent};
+  }
+
+  /* logos da stack em cinza, no tom da interface */
+  svg {
+    filter: grayscale(1) brightness(1.5);
   }
 
   ${media.md} {
-    font-size: 0.7rem;
-    padding: 0.45rem 0.7rem;
+    font-size: 0.6rem;
+    padding: 0.45rem 0.65rem;
   }
 `

@@ -1,33 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-scroll'
 import { media } from '../../styles/breakpoints'
-
-const borderGlow = keyframes`
-  0% {
-    border-color: #e94ffe;
-    box-shadow: 0 0 16px rgba(233, 79, 254, 0.5);
-  }
-  20% {
-    border-color: #c933ff;
-    box-shadow: 0 0 16px rgba(201, 51, 255, 0.5);
-  }
-  40% {
-    border-color: #a726ff;
-    box-shadow: 0 0 16px rgba(167, 38, 255, 0.5);
-  }
-  60% {
-    border-color: #8519ff;
-    box-shadow: 0 0 16px rgba(133, 25, 255, 0.5);
-  }
-  80% {
-    border-color: #ad14c4;
-    box-shadow: 0 0 16px rgba(173, 20, 196, 0.5);
-  }
-  100% {
-    border-color: #e94ffe;
-    box-shadow: 0 0 16px rgba(233, 79, 254, 0.5);
-  }
-`
+import { chamfer, hudPanel, monoLabel } from '../../styles/mixins'
 
 export const HeaderWrapper = styled.header`
   position: fixed;
@@ -35,9 +9,9 @@ export const HeaderWrapper = styled.header`
   left: 0;
   width: 100%;
   z-index: 9999;
-  background: rgba(9, 8, 14, 0.62);
-  backdrop-filter: blur(20px) saturate(1.5);
-  border-bottom: 1px solid ${(props) => props.theme.border};
+  background: rgba(5, 8, 10, 0.78);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid ${(props) => props.theme.line};
 `
 
 export const Nav = styled.nav`
@@ -52,48 +26,65 @@ export const Nav = styled.nav`
 `
 
 export const BrandLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   text-decoration: none;
   cursor: pointer;
   flex-shrink: 0;
 `
 
 export const LogoMark = styled.span`
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
   display: grid;
   place-items: center;
-  border-radius: 0.8rem;
-  font-family: Syne, sans-serif;
-  font-weight: 800;
-  font-size: 1.3rem;
-  letter-spacing: -0.08em;
-  color: ${(props) => props.theme.white};
-  background: ${(props) => props.theme.bg};
-  border: 1.5px solid #e94ffe;
-  animation: ${borderGlow} 8s linear infinite;
-  transition: transform 0.25s ease;
+  font-family: ${(props) => props.theme.fonts.display};
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: ${(props) => props.theme['on-accent']};
+  background: ${(props) => props.theme.accent};
+  ${chamfer('8px')}
+  transition: background-color 0.25s ease;
 
   @media (hover: hover) {
     ${BrandLink}:hover & {
-      transform: translateY(-1px);
+      background: ${(props) => props.theme.white};
     }
   }
 
   ${media.sm} {
-    width: 2.25rem;
-    height: 2.25rem;
-    font-size: 1.15rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.1rem;
+  }
+`
+
+/** Identificação ao lado do logo (some no celular). */
+export const BrandId = styled.span`
+  ${monoLabel}
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: ${(props) => props.theme['text-faint']};
+
+  strong {
+    display: block;
+    font-weight: 500;
+    color: ${(props) => props.theme.text};
+  }
+
+  ${media.md} {
+    display: none;
   }
 `
 
 export const MenuButton = styled.button`
   display: none;
-  background: rgba(168, 85, 247, 0.12);
-  border: 1px solid ${(props) => props.theme.border};
+  background: transparent;
+  border: 1px solid ${(props) => props.theme['line-strong']};
   cursor: pointer;
-  color: ${(props) => props.theme['purple-200']};
+  color: ${(props) => props.theme.accent};
   padding: 0.45rem;
-  border-radius: 0.75rem;
 
   ${media.md} {
     display: flex;
@@ -109,7 +100,7 @@ export const NavList = styled.ul<{ $isOpen: boolean }>`
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 0.35rem;
+  gap: 0.25rem;
 
   ${media.md} {
     display: ${(props) => (props.$isOpen ? 'flex' : 'none')};
@@ -121,40 +112,50 @@ export const NavList = styled.ul<{ $isOpen: boolean }>`
     align-items: stretch;
     gap: 0.25rem;
     padding: 0.65rem;
-    background: ${(props) => props.theme['surface-strong']};
-    border: 1px solid ${(props) => props.theme.border};
-    border-radius: 1rem;
-    backdrop-filter: blur(18px);
+    ${hudPanel}
+    background-color: ${(props) => props.theme['panel-solid']};
   }
 `
 
+export const NavIndex = styled.span`
+  margin-right: 0.45rem;
+  color: ${(props) => props.theme['text-faint']};
+  transition: color 0.2s ease;
+`
+
 export const NavItem = styled.li`
-  color: ${(props) => props.theme['purple-300']};
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.9rem;
+  ${monoLabel}
+  font-size: 0.74rem;
+  color: ${(props) => props.theme.text};
 
   a {
     display: block;
     color: inherit;
     text-decoration: none;
-    padding: 0.45rem 0.9rem;
-    border-radius: 999px;
-    transition: color 0.25s ease, background 0.25s ease;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid transparent;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
 
     @media (hover: hover) {
       &:hover {
         color: ${(props) => props.theme.white};
-        background: rgba(168, 85, 247, 0.16);
+        border-color: ${(props) => props.theme.line};
         cursor: pointer;
+
+        ${NavIndex} {
+          color: ${(props) => props.theme.accent};
+        }
       }
     }
   }
 
   ${media.md} {
+    font-size: 0.85rem;
+
     a {
-      padding: 0.8rem 1rem;
-      font-size: 1rem;
-      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
     }
   }
 `
@@ -180,8 +181,7 @@ export const ScrollProgress = styled.span`
     width: 100%;
     height: 2px;
     transform-origin: 0 50%;
-    background: linear-gradient(90deg, #e94ffe, #a855f7 60%, #6ff0ff);
-    box-shadow: 0 0 10px rgba(233, 79, 254, 0.6);
+    background: ${(props) => props.theme.accent};
     pointer-events: none;
     animation: ${growProgress} linear both;
     animation-timeline: scroll(root block);
