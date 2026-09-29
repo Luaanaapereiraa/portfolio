@@ -6,7 +6,7 @@ import {
   ContactCard,
   ContainerContact,
   IconStyle,
-  PurpleText,
+  AccentText,
 } from './styles'
 
 const Contact = () => {
@@ -14,9 +14,9 @@ const Contact = () => {
 
   return (
     <ContainerContact id="contact-section" $isActive={inView} ref={ref}>
-      <SectionTitle data-kicker="// contato">Contato</SectionTitle>
-      <PurpleText>Vamos conversar?</PurpleText>
-      <p>Entre em contato comigo pelos links abaixo, por e-mail, LinkedIn ou WhatsApp:</p>
+      <SectionTitle data-kicker="[04] // canal aberto">Contato</SectionTitle>
+      <AccentText>&gt; vamos conversar?</AccentText>
+      <p>Aberta a oportunidades e a conversas sobre o BoxStep. Escolha o canal:</p>
       <IconStyle>
         {contactChannels.map((channel) => (
           <ContactCard
@@ -31,7 +31,10 @@ const Contact = () => {
               width={channel.iconWidth}
               height={channel.iconHeight}
             />
-            <span>{channel.label}</span>
+            <span>
+              <small aria-hidden="true">{channel.caption}</small>
+              {channel.label}
+            </span>
           </ContactCard>
         ))}
       </IconStyle>

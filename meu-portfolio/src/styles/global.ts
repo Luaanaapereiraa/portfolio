@@ -14,11 +14,12 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     background: ${(props) => props.theme.bg};
-    color: ${(props) => props.theme['gray-300']};
+    color: ${(props) => props.theme.text};
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
+  /* grade de interface + vinheta; um brilho ciano bem discreto no topo */
   body::before {
     content: '';
     position: fixed;
@@ -26,9 +27,15 @@ export const GlobalStyle = createGlobalStyle`
     pointer-events: none;
     z-index: 0;
     background:
-      radial-gradient(ellipse 70% 50% at 8% -8%, rgba(168, 85, 247, 0.32), transparent 55%),
-      radial-gradient(ellipse 50% 40% at 96% 8%, rgba(233, 79, 254, 0.14), transparent 50%),
-      radial-gradient(ellipse 50% 30% at 50% 110%, rgba(133, 25, 255, 0.12), transparent 55%);
+      radial-gradient(ellipse 60% 45% at 15% -10%, rgba(0, 224, 255, 0.08), transparent 60%),
+      radial-gradient(ellipse 120% 90% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.7)),
+      linear-gradient(${(props) => props.theme.grid} 1px, transparent 1px) 0 0 / 40px 40px,
+      linear-gradient(90deg, ${(props) => props.theme.grid} 1px, transparent 1px) 0 0 / 40px 40px;
+  }
+
+  ::selection {
+    background: ${(props) => props.theme.accent};
+    color: ${(props) => props.theme['on-accent']};
   }
 
   #root {
@@ -44,7 +51,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   :focus-visible {
-    outline: 2px solid ${(props) => props.theme['purple-400']};
+    outline: 2px solid ${(props) => props.theme.accent};
     outline-offset: 2px;
   }
 
@@ -58,19 +65,19 @@ export const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar-thumb {
     background-color: transparent;
-    border: 2px solid ${(props) => props.theme['purple-400']};
-    border-radius: 20px;
+    border: 2px solid ${(props) => props.theme['line-strong']};
+    border-radius: 0;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: ${(props) => props.theme['gray-500']};
+    background-color: ${(props) => props.theme['accent-dim']};
   }
 
   body,
   input,
   textarea,
   button {
-    font-family: Outfit, 'Roboto', sans-serif;
+    font-family: ${(props) => props.theme.fonts.body};
     font-weight: 400;
     font-size: 1rem;
   }

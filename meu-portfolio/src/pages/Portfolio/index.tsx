@@ -14,6 +14,7 @@ import {
   Grid,
   Highlights,
   Image,
+  Meta,
   ProjectCard,
   ProjectTitle,
   Status,
@@ -48,6 +49,17 @@ function ProjectLinks({ project, magnetic = false }: { project: Project; magneti
   )
 }
 
+/** "PROJ-001 · ● Em desenvolvimento" — o código segue a ordem da lista de projetos. */
+function ProjectMeta({ project }: { project: Project }) {
+  const code = `PROJ-${String(projects.indexOf(project) + 1).padStart(3, '0')}`
+  return (
+    <Meta>
+      <span aria-hidden="true">{code}</span>
+      <Status>{project.status}</Status>
+    </Meta>
+  )
+}
+
 function StackTags({ stack }: { stack: string[] }) {
   return (
     <TagList aria-label="Tecnologias">
@@ -73,12 +85,12 @@ const Portfolio = () => {
         revealScope.current = node
       }}
     >
-      <SectionTitle data-kicker="// projetos">Projetos</SectionTitle>
+      <SectionTitle data-kicker="[03] // em execução">Projetos</SectionTitle>
 
       {featured.map((project) => (
         <FeaturedCard key={project.id} aria-labelledby={`${project.id}-title`}>
           <FeaturedContent>
-            <Status>{project.status}</Status>
+            <ProjectMeta project={project} />
             <ProjectTitle id={`${project.id}-title`} $large>
               {project.title}
             </ProjectTitle>
@@ -109,9 +121,11 @@ const Portfolio = () => {
                 loading="lazy"
               />
             ) : (
-              <Cover aria-hidden="true">{project.title}</Cover>
+              <Cover aria-hidden="true">
+                <span>{project.title}</span>
+              </Cover>
             )}
-            <Status>{project.status}</Status>
+            <ProjectMeta project={project} />
             <ProjectTitle id={`${project.id}-title`}>{project.title}</ProjectTitle>
             <Tagline>{project.tagline}</Tagline>
             <Description>{project.description}</Description>

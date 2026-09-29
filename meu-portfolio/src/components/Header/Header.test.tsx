@@ -62,7 +62,7 @@ describe('Header', () => {
     renderWithTheme(<Header />)
 
     await user.click(screen.getByRole('button', { name: 'Abrir menu' }))
-    await user.click(screen.getByRole('link', { name: '//Skills' }))
+    await user.click(screen.getByRole('link', { name: 'Skills' }))
 
     expect(screen.getByRole('button', { name: 'Abrir menu' })).toHaveAttribute(
       'aria-expanded',

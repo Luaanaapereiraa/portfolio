@@ -9,7 +9,6 @@ import { LiveCodePanel } from './LiveCodePanel'
 import MagneticButton from '../../components/MagneticButton'
 import {
   About,
-  AboutPurple,
   Availability,
   BaseImage,
   CallToAction,
@@ -18,8 +17,10 @@ import {
   ContainerHome,
   ContainerText,
   FloatingLayer,
+  Greeting,
   Illustration,
   MyName,
+  Readout,
   Role,
   RoleScramble,
   RoleSizer,
@@ -129,8 +130,11 @@ const Home = () => {
       }}
     >
       <ContainerText>
-        <Availability data-anim="badge">Aberta a oportunidades · remoto ou São Paulo</Availability>
-        <AboutPurple data-anim="hello">Olá, meu nome é</AboutPurple>
+        <Readout data-anim="badge">
+          <span aria-hidden="true">SYS://luana.pereira</span>
+          <Availability>Aberta a oportunidades · remoto ou SP</Availability>
+        </Readout>
+        <Greeting data-anim="hello">&gt; olá, meu nome é</Greeting>
         <MyName data-anim="name">Luana</MyName>
         <Role>
           {/* cópia estática: reserva o espaço (sem "pulo" de layout) e é a lida por leitores de tela */}
@@ -179,12 +183,12 @@ const Home = () => {
 
           <ChipSlot $position="top" data-anim="chip">
             <Chip $delay={0}>
-              <span aria-hidden="true">🚀</span> Construindo o <strong>BoxStep</strong>
+              <span aria-hidden="true">▸</span> Construindo o <strong>BoxStep</strong>
             </Chip>
           </ChipSlot>
           <ChipSlot $position="left" data-anim="chip">
             <Chip $delay={1.2}>
-              <strong>6 anos</strong> · XP Inc. · Pipefy
+              <strong>06 anos</strong> · XP Inc. · Pipefy
             </Chip>
           </ChipSlot>
           <ChipSlot $position="bottom" data-anim="chip">

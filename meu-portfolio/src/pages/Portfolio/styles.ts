@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { sectionFade } from '../../styles/animations'
 import { media } from '../../styles/breakpoints'
-import { cardHover, glass, pageWrap } from '../../styles/mixins'
+import { cardHover, hudPanel, monoLabel, pageWrap } from '../../styles/mixins'
 
 export const Container = styled.section<{ $isActive?: boolean }>`
   ${pageWrap}
@@ -15,31 +15,13 @@ export const Container = styled.section<{ $isActive?: boolean }>`
 `
 
 export const FeaturedCard = styled.article`
-  ${glass}
+  ${hudPanel}
   position: relative;
-  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
   gap: 2rem;
   padding: 2rem;
-  border-radius: 1.5rem;
-  border-color: ${(props) => props.theme['purple-400']};
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: -40% -20% auto auto;
-    width: 60%;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: radial-gradient(circle, ${(props) => props.theme.glow}, transparent 70%);
-    filter: blur(20px);
-    pointer-events: none;
-  }
-
-  > * {
-    position: relative;
-  }
+  border-color: ${(props) => props.theme['line-strong']};
 
   ${media.md} {
     grid-template-columns: 1fr;
@@ -55,31 +37,32 @@ export const FeaturedContent = styled.div`
   min-width: 0;
 `
 
+/** Destaques técnicos como saída de terminal. */
 export const Highlights = styled.ul`
   align-self: center;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.65rem;
   margin: 0;
   padding: 1.25rem;
-  border-radius: 1rem;
-  background: rgba(9, 8, 14, 0.45);
-  border: 1px solid ${(props) => props.theme.border};
+  background: rgba(2, 6, 8, 0.7);
+  border: 1px solid ${(props) => props.theme.line};
+  border-top: 2px solid ${(props) => props.theme.accent};
 
   li {
     list-style: none;
     position: relative;
     padding-left: 1.4rem;
-    font-size: 0.92rem;
-    line-height: 1.5;
-    color: ${(props) => props.theme['gray-100']};
+    font-family: ${(props) => props.theme.fonts.mono};
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: ${(props) => props.theme.text};
 
     &::before {
       content: '>';
       position: absolute;
       left: 0;
-      font-family: 'Roboto Mono', monospace;
-      color: ${(props) => props.theme['purple-100']};
+      color: ${(props) => props.theme.accent};
     }
   }
 `
@@ -99,12 +82,11 @@ export const Grid = styled.div`
 `
 
 export const ProjectCard = styled.article`
-  ${glass}
+  ${hudPanel}
   ${cardHover}
   min-width: 0;
-  padding: 1.25rem 1.1rem 1.35rem;
+  padding: 1.1rem 1.1rem 1.35rem;
   height: 100%;
-  border-radius: 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -119,90 +101,121 @@ const media16x10 = `
   width: 100%;
   aspect-ratio: 16 / 10;
   margin-bottom: 1rem;
-  border-radius: 0.75rem;
 `
 
 export const Image = styled.img<{ $screenshot?: boolean }>`
   ${media16x10}
   height: auto;
-  border: 1px solid ${(props) => props.theme.border};
+  border: 1px solid ${(props) => props.theme.line};
   object-fit: ${(props) => (props.$screenshot ? 'cover' : 'contain')};
   object-position: ${(props) => (props.$screenshot ? 'top' : 'center')};
   padding: ${(props) => (props.$screenshot ? '0' : '1.25rem')};
   background: ${(props) =>
     props.$screenshot
       ? 'transparent'
-      : 'radial-gradient(circle at 50% 60%, rgba(168, 85, 247, 0.18), rgba(9, 8, 14, 0.4) 70%)'};
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      : `linear-gradient(${props.theme.grid} 1px, transparent 1px) 0 0 / 16px 16px,
+         linear-gradient(90deg, ${props.theme.grid} 1px, transparent 1px) 0 0 / 16px 16px,
+         rgba(2, 6, 8, 0.7)`};
 `
 
+/** Capa para projetos sem imagem: grade + mira + nome. */
 export const Cover = styled.div`
   ${media16x10}
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   text-align: center;
-  line-height: 1.1;
-  font-family: Syne, sans-serif;
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: ${(props) => props.theme.fonts.display};
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: ${(props) => props.theme.white};
   background:
-    linear-gradient(rgba(192, 132, 252, 0.08) 1px, transparent 1px) 0 0 / 100% 14px,
-    linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(233, 79, 254, 0.12));
-  border: 1px solid ${(props) => props.theme.border};
+    linear-gradient(${(props) => props.theme.grid} 1px, transparent 1px) 0 0 / 16px 16px,
+    linear-gradient(90deg, ${(props) => props.theme.grid} 1px, transparent 1px) 0 0 / 16px 16px,
+    rgba(2, 6, 8, 0.7);
+  border: 1px solid ${(props) => props.theme.line};
+
+  /* mira no centro */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: ${(props) => props.theme['accent-dim']};
+    opacity: 0.5;
+  }
+
+  &::before {
+    left: 50%;
+    top: 12%;
+    bottom: 12%;
+    width: 1px;
+  }
+
+  &::after {
+    top: 50%;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+  }
+
+  span {
+    position: relative;
+    z-index: 1;
+    padding: 0.2rem 0.6rem;
+    background: ${(props) => props.theme.bg};
+  }
+`
+
+/** Linha de metadados: código do projeto + status. */
+export const Meta = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.9rem;
+  margin-bottom: 0.6rem;
+  ${monoLabel}
+  font-size: 0.66rem;
+  color: ${(props) => props.theme['text-faint']};
 `
 
 export const Status = styled.span`
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.6rem;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: ${(props) => props.theme['gray-300']};
+  color: ${(props) => props.theme.accent};
 
   &::before {
-    content: '';
-    width: 0.45rem;
-    height: 0.45rem;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 8px #4ade80;
+    content: '● ';
   }
 `
 
 export const ProjectTitle = styled.h3<{ $large?: boolean }>`
-  font-family: Syne, sans-serif;
-  font-size: ${(props) => (props.$large ? 'clamp(1.8rem, 4vw, 2.4rem)' : '1.15rem')};
-  font-weight: ${(props) => (props.$large ? 800 : 700)};
-  letter-spacing: ${(props) => (props.$large ? '-0.04em' : 'normal')};
-  line-height: 1.1;
-  margin-bottom: 0.35rem;
+  font-family: ${(props) => props.theme.fonts.display};
+  font-size: ${(props) => (props.$large ? 'clamp(2rem, 4.5vw, 2.8rem)' : '1.3rem')};
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin-bottom: 0.4rem;
   color: ${(props) => props.theme.white};
 `
 
 export const Tagline = styled.p`
-  margin-bottom: 0.6rem;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.82rem;
-  color: ${(props) => props.theme['purple-300']};
+  margin-bottom: 0.7rem;
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: 0.78rem;
+  color: ${(props) => props.theme.accent};
 `
 
 export const Description = styled.p`
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: ${(props) => props.theme['gray-300']};
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: ${(props) => props.theme['text-dim']};
 `
 
 export const TagList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem;
   margin: 1rem 0 0;
   padding: 0;
 `
@@ -211,5 +224,5 @@ export const Actions = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
-  padding-top: 1.25rem;
+  padding-top: 1.35rem;
 `
