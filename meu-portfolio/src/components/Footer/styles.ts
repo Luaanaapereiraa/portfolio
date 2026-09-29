@@ -32,3 +32,20 @@ export const StatusBar = styled.div`
 export const Online = styled.span`
   color: ${(props) => props.theme.accent};
 `
+
+export const CookiesButton = styled.button`
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.theme.accent};
+  }
+`

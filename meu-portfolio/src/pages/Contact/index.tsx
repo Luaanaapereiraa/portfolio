@@ -24,6 +24,8 @@ const Contact = () => {
             href={channel.href}
             target={channel.external ? '_blank' : undefined}
             rel={channel.external ? 'noopener noreferrer' : undefined}
+            data-track="Contact Clicked"
+            data-track-channel={channel.id}
           >
             <Icon
               icon={channel.icon}

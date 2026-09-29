@@ -157,8 +157,21 @@ const Home = () => {
           o que me dá um olhar de produto e de usuário além do código.
         </About>
         <CallToAction data-anim="reveal">
-          <MagneticButton href="#portfolio-section">Ver projetos</MagneticButton>
-          <MagneticButton href="#contact-section" $variant="ghost">
+          <MagneticButton
+            href="#portfolio-section"
+            data-track="CTA Clicked"
+            data-track-cta="ver-projetos"
+            data-track-section="hero"
+          >
+            Ver projetos
+          </MagneticButton>
+          <MagneticButton
+            href="#contact-section"
+            $variant="ghost"
+            data-track="CTA Clicked"
+            data-track-cta="vamos-conversar"
+            data-track-section="hero"
+          >
             Vamos conversar
           </MagneticButton>
         </CallToAction>
