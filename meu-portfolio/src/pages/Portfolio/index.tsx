@@ -22,6 +22,15 @@ import {
   Tagline,
 } from './styles'
 
+/** "Pedir uma demo" → "pedir-uma-demo" (valor estável para o analytics). */
+const toSlug = (text: string) =>
+  text
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+
 const revealGroups: RevealGroup[] = [
   // destaques do BoxStep aparecem linha a linha, como num terminal
   { trigger: '[data-anim="highlights"]', items: 'li', from: { autoAlpha: 0, x: -14 }, stagger: 0.12 },
@@ -41,6 +50,9 @@ function ProjectLinks({ project, magnetic = false }: { project: Project; magneti
           target={link.external ? '_blank' : undefined}
           rel={link.external ? 'noopener noreferrer' : undefined}
           aria-label={`${link.label} — ${project.title}`}
+          data-track="Project Link Clicked"
+          data-track-project={project.id}
+          data-track-link={toSlug(link.label)}
         >
           {link.label}
         </Button>
