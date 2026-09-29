@@ -158,3 +158,32 @@ export const NavItem = styled.li`
     }
   }
 `
+
+const growProgress = keyframes`
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+`
+
+/** Barra de progresso de leitura: CSS puro, ligada à rolagem (sem JS). */
+export const ScrollProgress = styled.span`
+  display: none;
+
+  @supports (animation-timeline: scroll()) {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    transform-origin: 0 50%;
+    background: linear-gradient(90deg, #e94ffe, #a855f7 60%, #6ff0ff);
+    box-shadow: 0 0 10px rgba(233, 79, 254, 0.6);
+    pointer-events: none;
+    animation: ${growProgress} linear both;
+    animation-timeline: scroll(root block);
+  }
+`

@@ -1,5 +1,7 @@
 import type { Project } from '../../data/projects'
 import { projects } from '../../data/projects'
+import { useStaggerReveal, type RevealGroup } from '../../animations/useStaggerReveal'
+import MagneticButton from '../../components/MagneticButton'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import { ButtonLink, SectionTitle, Tag } from '../../styles/shared'
 import {
@@ -19,11 +21,19 @@ import {
   Tagline,
 } from './styles'
 
-function ProjectLinks({ project }: { project: Project }) {
+const revealGroups: RevealGroup[] = [
+  // destaques do BoxStep aparecem linha a linha, como num terminal
+  { trigger: '[data-anim="highlights"]', items: 'li', from: { autoAlpha: 0, x: -14 }, stagger: 0.12 },
+  { trigger: '[data-anim="grid"]', items: '[data-anim="card"]', from: { autoAlpha: 0, y: 30 }, stagger: 0.12 },
+]
+
+function ProjectLinks({ project, magnetic = false }: { project: Project; magnetic?: boolean }) {
+  const Button = magnetic ? MagneticButton : ButtonLink
+
   return (
     <Actions>
       {project.links.map((link, index) => (
-        <ButtonLink
+        <Button
           key={link.href}
           href={link.href}
           $variant={index === 0 ? 'primary' : 'ghost'}
@@ -32,7 +42,7 @@ function ProjectLinks({ project }: { project: Project }) {
           aria-label={`${link.label} — ${project.title}`}
         >
           {link.label}
-        </ButtonLink>
+        </Button>
       ))}
     </Actions>
   )
@@ -50,11 +60,19 @@ function StackTags({ stack }: { stack: string[] }) {
 
 const Portfolio = () => {
   const { ref, inView } = useSectionInView()
+  const revealScope = useStaggerReveal<HTMLElement>(revealGroups)
   const featured = projects.filter((project) => project.featured)
   const others = projects.filter((project) => !project.featured)
 
   return (
-    <Container id="portfolio-section" $isActive={inView} ref={ref}>
+    <Container
+      id="portfolio-section"
+      $isActive={inView}
+      ref={(node: HTMLElement | null) => {
+        ref(node)
+        revealScope.current = node
+      }}
+    >
       <SectionTitle data-kicker="// projetos">Projetos</SectionTitle>
 
       {featured.map((project) => (
@@ -67,11 +85,11 @@ const Portfolio = () => {
             <Tagline>{project.tagline}</Tagline>
             <Description>{project.description}</Description>
             <StackTags stack={project.stack} />
-            <ProjectLinks project={project} />
+            <ProjectLinks project={project} magnetic />
           </FeaturedContent>
 
           {project.highlights && (
-            <Highlights aria-label={`Destaques técnicos do ${project.title}`}>
+            <Highlights data-anim="highlights" aria-label={`Destaques técnicos do ${project.title}`}>
               {project.highlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>
               ))}
@@ -80,9 +98,9 @@ const Portfolio = () => {
         </FeaturedCard>
       ))}
 
-      <Grid>
+      <Grid data-anim="grid">
         {others.map((project) => (
-          <ProjectCard key={project.id} aria-labelledby={`${project.id}-title`}>
+          <ProjectCard key={project.id} data-anim="card" aria-labelledby={`${project.id}-title`}>
             {project.image ? (
               <Image
                 src={project.image}

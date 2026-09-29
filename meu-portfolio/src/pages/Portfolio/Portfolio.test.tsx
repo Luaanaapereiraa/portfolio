@@ -29,13 +29,13 @@ describe('Portfolio', () => {
     })
   })
 
-  it('mostra o DestravAI em destaque com os diferenciais técnicos', () => {
+  it('mostra o BoxStep em destaque com os diferenciais técnicos', () => {
     renderWithTheme(<Portfolio />)
 
-    const card = screen.getByRole('article', { name: 'DestravAI' })
+    const card = screen.getByRole('article', { name: 'BoxStep' })
     expect(within(card).getByText('Em desenvolvimento')).toBeInTheDocument()
     expect(
-      within(card).getByRole('list', { name: /Destaques técnicos do DestravAI/i })
+      within(card).getByRole('list', { name: /Destaques técnicos do BoxStep/i })
     ).toBeInTheDocument()
     expect(within(card).getByRole('link', { name: /Pedir uma demo/i })).toHaveAttribute(
       'href',
