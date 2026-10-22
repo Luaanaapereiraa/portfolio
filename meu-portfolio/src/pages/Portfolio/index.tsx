@@ -22,7 +22,7 @@ import {
   Tagline,
 } from './styles'
 
-/** "Pedir uma demo" → "pedir-uma-demo" (valor estável para o analytics). */
+/** "Acessar o BoxStep" → "acessar-o-boxstep" (valor estável para o analytics). */
 const toSlug = (text: string) =>
   text
     .normalize('NFD')
@@ -61,7 +61,7 @@ function ProjectLinks({ project, magnetic = false }: { project: Project; magneti
   )
 }
 
-/** "PROJ-001 · ● Em desenvolvimento" — o código segue a ordem da lista de projetos. */
+/** "PROJ-001 · ● Beta aberto" — o código segue a ordem da lista de projetos. */
 function ProjectMeta({ project }: { project: Project }) {
   const code = `PROJ-${String(projects.indexOf(project) + 1).padStart(3, '0')}`
   return (

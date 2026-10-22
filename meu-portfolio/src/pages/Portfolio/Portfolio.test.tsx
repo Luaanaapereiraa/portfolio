@@ -29,15 +29,19 @@ describe('Portfolio', () => {
     })
   })
 
-  it('mostra o BoxStep em destaque com os diferenciais técnicos', () => {
+  it('mostra o BoxStep em destaque, no ar, com os diferenciais técnicos', () => {
     renderWithTheme(<Portfolio />)
 
     const card = screen.getByRole('article', { name: 'BoxStep' })
-    expect(within(card).getByText('Em desenvolvimento')).toBeInTheDocument()
+    expect(within(card).getByText('Beta aberto')).toBeInTheDocument()
     expect(
       within(card).getByRole('list', { name: /Destaques técnicos do BoxStep/i })
     ).toBeInTheDocument()
-    expect(within(card).getByRole('link', { name: /Pedir uma demo/i })).toHaveAttribute(
+
+    const app = within(card).getByRole('link', { name: /Acessar o BoxStep/i })
+    expect(app.getAttribute('href')).toMatch(/^https:\/\/boxstep\.app\/\?utm_source=portfolio/)
+    expect(app).toHaveAttribute('target', '_blank')
+    expect(within(card).getByRole('link', { name: /Falar comigo/i })).toHaveAttribute(
       'href',
       '#contact-section'
     )
