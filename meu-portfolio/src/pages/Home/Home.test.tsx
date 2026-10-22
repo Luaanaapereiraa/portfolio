@@ -20,7 +20,8 @@ describe('Home', () => {
     expect(roleCopies.filter((el) => el.getAttribute('aria-hidden') === 'true')).toHaveLength(1)
     expect(screen.getByText(/Aberta a oportunidades/i)).toBeInTheDocument()
     expect(screen.getByText('XP Inc.')).toBeInTheDocument()
-    expect(screen.getByText(/Hoje estou construindo o/)).toHaveTextContent('BoxStep')
+    expect(screen.getByText(/Criei o/)).toHaveTextContent('BoxStep')
+    expect(screen.getByText(/Criei o/)).toHaveTextContent('no ar em beta aberto')
     expect(
       screen.getByAltText(/Luana, engenheira de software/i)
     ).toBeInTheDocument()
@@ -29,7 +30,7 @@ describe('Home', () => {
   it('mostra os destaques flutuando ao redor da foto', () => {
     renderWithTheme(<Home />)
 
-    expect(screen.getByText(/Construindo o/)).toHaveTextContent('Construindo o BoxStep')
+    expect(screen.getByText(/no ar · beta/)).toHaveTextContent('BoxStep no ar · beta')
     expect(screen.getByText(/XP Inc\. · Pipefy/)).toBeInTheDocument()
     expect(screen.getByLabelText('Stack: React, Node.js, Supabase')).toBeInTheDocument()
   })

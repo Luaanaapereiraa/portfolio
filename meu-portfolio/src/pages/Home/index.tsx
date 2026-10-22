@@ -151,9 +151,9 @@ const Home = () => {
           automatizados, deploy e monitoramento.
         </About>
         <About data-anim="reveal">
-          Hoje estou construindo o <strong>BoxStep</strong>, um app de produtividade
-          com agente de IA, e uso IA no dia a dia de desenvolvimento, com as decisões
-          técnicas e a qualidade sob minha responsabilidade. Vim do Marketing Digital,
+          Criei o <strong>BoxStep</strong>, um app de produtividade com agente de IA
+          que já está no ar em beta aberto, e uso IA no dia a dia de desenvolvimento,
+          com as decisões técnicas e a qualidade sob minha responsabilidade. Vim do Marketing Digital,
           o que me dá um olhar de produto e de usuário além do código.
         </About>
         <CallToAction data-anim="reveal">
@@ -196,7 +196,7 @@ const Home = () => {
 
           <ChipSlot $position="top" data-anim="chip">
             <Chip $delay={0}>
-              <span aria-hidden="true">▸</span> Construindo o <strong>BoxStep</strong>
+              <span aria-hidden="true">▸</span> <strong>BoxStep</strong> no ar · beta
             </Chip>
           </ChipSlot>
           <ChipSlot $position="left" data-anim="chip">

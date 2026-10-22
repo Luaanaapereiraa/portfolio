@@ -96,14 +96,14 @@ describe('installClickTracking', () => {
 
   it('transforma data-track-* em evento, inclusive clicando num filho', () => {
     document.body.innerHTML = `
-      <a href="#x" data-track="Project Link Clicked" data-track-project="boxstep" data-track-link="pedir-uma-demo">
-        <span id="inner">Pedir uma demo</span>
+      <a href="#x" data-track="Project Link Clicked" data-track-project="boxstep" data-track-link="acessar-o-boxstep">
+        <span id="inner">Acessar o BoxStep</span>
       </a>`
     document.getElementById('inner')?.click()
 
     expect(track).toHaveBeenCalledWith('Project Link Clicked', {
       project: 'boxstep',
-      link: 'pedir-uma-demo',
+      link: 'acessar-o-boxstep',
     })
   })
 

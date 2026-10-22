@@ -1,7 +1,7 @@
 import Avocat from '../assets/avocatfeed.png'
 import PortfolioPreview from '../assets/portfolio-preview.webp'
 
-export type ProjectStatus = 'Em desenvolvimento' | 'Em produção' | 'Concluído'
+export type ProjectStatus = 'Em desenvolvimento' | 'Beta aberto' | 'Em produção' | 'Concluído'
 
 export interface ProjectLink {
   label: string
@@ -30,8 +30,8 @@ export const projects: Project[] = [
     title: 'BoxStep',
     tagline: 'Produtividade com IA: de tarefa travada a plano de ação',
     description:
-      'Aplicação que usa um agente de IA para transformar tarefas travadas em planos claros e executáveis. Produto que estou construindo de ponta a ponta, da definição do problema à arquitetura, testes e deploy.',
-    status: 'Em desenvolvimento',
+      'Aplicação que usa um agente de IA para transformar tarefas travadas em planos claros e executáveis. Produto que construí de ponta a ponta, da definição do problema à arquitetura, testes e deploy. No ar em beta aberto, grátis no navegador e no celular.',
+    status: 'Beta aberto',
     featured: true,
     highlights: [
       'Agente de IA com saídas estruturadas e validadas',
@@ -42,7 +42,15 @@ export const projects: Project[] = [
       'Testes unitários, de integração e end-to-end',
     ],
     stack: ['Next.js', 'React', 'Fastify', 'Supabase', 'PostgreSQL', 'Zod', 'Playwright'],
-    links: [{ label: 'Pedir uma demo', href: '#contact-section' }],
+    links: [
+      {
+        label: 'Acessar o BoxStep',
+        // UTM: o analytics do BoxStep mostra quantas visitas vieram do portfólio
+        href: 'https://boxstep.app/?utm_source=portfolio&utm_medium=referral&utm_campaign=card',
+        external: true,
+      },
+      { label: 'Falar comigo', href: '#contact-section' },
+    ],
   },
   {
     id: 'dashboard',
