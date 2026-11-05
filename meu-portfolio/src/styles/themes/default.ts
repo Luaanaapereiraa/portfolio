@@ -22,6 +22,9 @@ export const defaultTheme = {
   'accent-soft': 'rgba(0, 224, 255, 0.1)',
   'on-accent': '#021216',
 
+  // validação de formulário (único uso fora do ciano)
+  danger: '#FF6B81',
+
   // superfícies e linhas
   bg: '#05080A',
   panel: 'rgba(7, 15, 18, 0.86)',

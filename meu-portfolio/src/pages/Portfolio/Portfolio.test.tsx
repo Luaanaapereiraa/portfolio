@@ -34,6 +34,7 @@ describe('Portfolio', () => {
 
     const card = screen.getByRole('article', { name: 'BoxStep' })
     expect(within(card).getByText('Beta aberto')).toBeInTheDocument()
+    expect(within(card).getByAltText('Preview do projeto BoxStep')).toBeInTheDocument()
     expect(
       within(card).getByRole('list', { name: /Destaques técnicos do BoxStep/i })
     ).toBeInTheDocument()

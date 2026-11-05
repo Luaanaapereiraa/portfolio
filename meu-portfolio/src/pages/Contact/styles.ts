@@ -79,3 +79,27 @@ export const ContactCard = styled.a`
     }
   }
 `
+
+/** Atalho discreto para a página /freela (abaixo dos canais de contato). */
+export const FreelaLink = styled.a`
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  padding: 0.5rem 0;
+  font-family: ${(props) => props.theme.fonts.mono};
+  font-size: 0.82rem;
+  color: ${(props) => props.theme['text-dim']};
+  text-decoration: none;
+  border-bottom: 1px solid ${(props) => props.theme.line};
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+
+  span {
+    color: ${(props) => props.theme.accent};
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.white};
+    border-color: ${(props) => props.theme.accent};
+  }
+`

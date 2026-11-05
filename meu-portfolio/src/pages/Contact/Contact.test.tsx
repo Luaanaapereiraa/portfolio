@@ -21,4 +21,13 @@ describe('Contact', () => {
       getWhatsAppUrl(contactInfo.whatsappNumber)
     )
   })
+
+  it('tem um atalho discreto para a página de freela', () => {
+    renderWithTheme(<Contact />)
+
+    expect(screen.getByRole('link', { name: /Também atendo como freelancer/i })).toHaveAttribute(
+      'href',
+      '/freela/'
+    )
+  })
 })
