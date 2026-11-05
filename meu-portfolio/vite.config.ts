@@ -28,6 +28,15 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react(), googleSiteVerification(env.VITE_GOOGLE_SITE_VERIFICATION)],
+    build: {
+      rollupOptions: {
+        // duas páginas HTML (cada uma com título/descrição próprios para o Google)
+        input: {
+          main: 'index.html',
+          freela: 'freela/index.html',
+        },
+      },
+    },
     test: {
       environment: 'jsdom',
       setupFiles: './src/test/setup.ts',

@@ -3,10 +3,11 @@ import { contactChannels } from '../../data/contact'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import { SectionTitle } from '../../styles/shared'
 import {
+  AccentText,
   ContactCard,
   ContainerContact,
+  FreelaLink,
   IconStyle,
-  AccentText,
 } from './styles'
 
 const Contact = () => {
@@ -40,6 +41,15 @@ const Contact = () => {
           </ContactCard>
         ))}
       </IconStyle>
+      <FreelaLink
+        href="/freela/"
+        data-track="CTA Clicked"
+        data-track-cta="freela"
+        data-track-section="contato"
+      >
+        <span aria-hidden="true">▸</span> Tem um projeto para tirar do papel? Também atendo como
+        freelancer <span aria-hidden="true">→</span>
+      </FreelaLink>
     </ContainerContact>
   )
 }

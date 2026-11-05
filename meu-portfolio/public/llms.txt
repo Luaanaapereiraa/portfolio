@@ -1,0 +1,31 @@
+# Luana Pereira
+
+> Engenheira de Software Full Stack em São Paulo (Brasil), com 6 anos de experiência construindo produtos web e mobile em fintech, edtech de educação médica e gestão de processos, com passagens por XP Inc., Pipefy e Hardwork Medicina. Criadora do BoxStep. Aberta a vagas (remoto ou São Paulo) e a projetos freelance.
+
+Atua no ciclo completo do produto: requisitos, arquitetura, implementação, testes automatizados, deploy e monitoramento. Stack principal: TypeScript, React, Next.js, React Native, Node.js, Fastify, NestJS, PostgreSQL, Supabase, Zod e Playwright.
+
+## Páginas
+
+- [Portfólio](https://luanapereira.vercel.app/): sobre, skills, projetos e contato
+- [Freela](https://luanapereira.vercel.app/freela/): serviços sob demanda, processo de trabalho, casos e pedido de orçamento
+
+## Projetos
+
+- [BoxStep](https://boxstep.app/): app de produtividade com agente de IA que transforma tarefas travadas em planos de ação. No ar em beta aberto, grátis no navegador e no celular. Next.js, Fastify, Supabase, PostgreSQL, Zod, PWA offline.
+- [Ferro Air](https://www.ferroair.com.br/): site para empresa de instalação e manutenção de ar-condicionado em São Paulo, focado em pedidos de orçamento pelo WhatsApp e buscas locais. Next.js.
+- [Dashboard](https://dashboard-hvac.vercel.app/): painel de acompanhamento de obras por equipamento, com planejamento semanal, métricas e evidências em foto. Next.js e Tailwind CSS.
+- [AvocatFeed](https://avocat-social-feed.vercel.app/): feed social com publicações, comentários e curtidas. React e Vite.
+
+## Serviços freelance
+
+- Sites e landing pages, com SEO para o Google e GEO (Generative Engine Optimization) para IAs como ChatGPT, Gemini e Perplexity
+- Apps e MVPs, do zero ao ar
+- Sistemas internos e dashboards
+- Manutenção e melhorias de sites e apps existentes
+
+Orçamento: https://luanapereira.vercel.app/freela/#orcamento
+
+## Contato
+
+- [LinkedIn](https://www.linkedin.com/in/luaanaapereiraa)
+- [GitHub](https://github.com/Luaanaapereiraa)

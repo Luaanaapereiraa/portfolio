@@ -37,6 +37,14 @@ export const FeaturedContent = styled.div`
   min-width: 0;
 `
 
+/** Coluna direita do destaque: print do produto + destaques técnicos. */
+export const FeaturedAside = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+`
+
 /** Destaques técnicos como saída de terminal. */
 export const Highlights = styled.ul`
   align-self: center;

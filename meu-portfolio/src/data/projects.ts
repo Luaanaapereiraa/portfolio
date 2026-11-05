@@ -1,4 +1,7 @@
 import Avocat from '../assets/avocatfeed.png'
+import BoxStepPreview from '../assets/boxstep-preview.webp'
+import DashboardPreview from '../assets/dashboard-preview.webp'
+import FerroAirPreview from '../assets/ferroair-preview.webp'
 import PortfolioPreview from '../assets/portfolio-preview.webp'
 
 export type ProjectStatus = 'Em desenvolvimento' | 'Beta aberto' | 'Em produção' | 'Concluído'
@@ -33,6 +36,8 @@ export const projects: Project[] = [
       'Aplicação que usa um agente de IA para transformar tarefas travadas em planos claros e executáveis. Produto que construí de ponta a ponta, da definição do problema à arquitetura, testes e deploy. No ar em beta aberto, grátis no navegador e no celular.',
     status: 'Beta aberto',
     featured: true,
+    image: BoxStepPreview,
+    imageKind: 'screenshot',
     highlights: [
       'Agente de IA com saídas estruturadas e validadas',
       'Monorepo com contratos compartilhados em TypeScript + Zod',
@@ -53,12 +58,26 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'ferroair',
+    title: 'Ferro Air',
+    tagline: 'Site para empresa de ar-condicionado',
+    description:
+      'Site para uma empresa de instalação e manutenção de ar-condicionado em São Paulo, pensado para gerar pedidos de orçamento pelo WhatsApp e aparecer nas buscas locais do Google.',
+    status: 'Em produção',
+    image: FerroAirPreview,
+    imageKind: 'screenshot',
+    stack: ['Next.js', 'React', 'SEO local', 'Vercel'],
+    links: [{ label: 'Ver site', href: 'https://www.ferroair.com.br/', external: true }],
+  },
+  {
     id: 'dashboard',
     title: 'Dashboard',
     tagline: 'Acompanhamento de obras',
     description:
       'Painel para acompanhar a execução de obras por equipamento: progresso por etapa, planejamento semanal, métricas, evidências em foto e geração de RDO.',
     status: 'Em produção',
+    image: DashboardPreview,
+    imageKind: 'screenshot',
     stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
     links: [
       { label: 'Ver demo', href: 'https://dashboard-hvac.vercel.app', external: true },

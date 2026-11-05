@@ -16,6 +16,7 @@ export type EventName =
   | 'CTA Clicked'
   | 'Project Link Clicked'
   | 'Contact Clicked'
+  | 'Quote Requested'
   | 'JS Error'
 
 type EventProps = Record<string, string>
@@ -26,6 +27,8 @@ const GOOGLE_EVENT_NAMES: Record<EventName, string> = {
   'CTA Clicked': 'cta_click',
   'Project Link Clicked': 'project_link_click',
   'Contact Clicked': 'contact_click',
+  // evento recomendado do GA4 para leads; dá para marcar como conversão no painel
+  'Quote Requested': 'generate_lead',
   'JS Error': 'exception',
 }
 

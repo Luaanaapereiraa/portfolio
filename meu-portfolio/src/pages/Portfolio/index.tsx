@@ -4,11 +4,13 @@ import { useStaggerReveal, type RevealGroup } from '../../animations/useStaggerR
 import MagneticButton from '../../components/MagneticButton'
 import { useSectionInView } from '../../hooks/useSectionInView'
 import { ButtonLink, SectionTitle, Tag } from '../../styles/shared'
+import { toSlug } from '../../utils/slug'
 import {
   Actions,
   Container,
   Cover,
   Description,
+  FeaturedAside,
   FeaturedCard,
   FeaturedContent,
   Grid,
@@ -21,15 +23,6 @@ import {
   TagList,
   Tagline,
 } from './styles'
-
-/** "Acessar o BoxStep" → "acessar-o-boxstep" (valor estável para o analytics). */
-const toSlug = (text: string) =>
-  text
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '')
 
 const revealGroups: RevealGroup[] = [
   // destaques do BoxStep aparecem linha a linha, como num terminal
@@ -112,13 +105,23 @@ const Portfolio = () => {
             <ProjectLinks project={project} magnetic />
           </FeaturedContent>
 
-          {project.highlights && (
-            <Highlights data-anim="highlights" aria-label={`Destaques técnicos do ${project.title}`}>
-              {project.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </Highlights>
-          )}
+          <FeaturedAside>
+            {project.image && (
+              <Image
+                src={project.image}
+                alt={`Preview do projeto ${project.title}`}
+                $screenshot={project.imageKind === 'screenshot'}
+                loading="lazy"
+              />
+            )}
+            {project.highlights && (
+              <Highlights data-anim="highlights" aria-label={`Destaques técnicos do ${project.title}`}>
+                {project.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </Highlights>
+            )}
+          </FeaturedAside>
         </FeaturedCard>
       ))}
 
